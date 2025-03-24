@@ -8,7 +8,8 @@ body {
 
 div.main-window {
     width: 160vh;
-    height:90vh;
+    min-height: 90vh; 
+    height: auto;              /* para expand */
     margin: 5vh auto; 
     background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
     backdrop-filter: blur(25px);
