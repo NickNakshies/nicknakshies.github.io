@@ -1,0 +1,159 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    background-image: url('../../assets/Background.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+div.main-window {
+    width: 160vh;
+    min-height: 90vh;
+    height: auto;        /* PINALITAN KO KASI DI HUMAHABA */
+    margin: 5vh auto; 
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border-radius: 80px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+}
+
+/* Transparent navbar */
+.navbar {
+    background-color: transparent !important; /* make navbar clear */
+}
+
+/* Optional: remove box shadow */
+.navbar-light {
+    box-shadow: none !important;
+}
+
+/* Navbar links color */
+.navbar-light .navbar-nav .nav-link {
+    color: #fdffd6; /* or white if dark background */
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    color: #007bff;
+}
+
+/* Icon color */
+.navbar-light .navbar-nav .nav-link i {
+    color: #fdffd6; /* or #fff for dark bg */
+}
+
+/* Optional: style the brand/logo image */
+.navbar-brand img {
+    height: 125px;
+}
+
+.override-icon{
+    font-size:2.5rem;
+}
+
+/*                              ITEM STORE!!                      */
+
+/*  --------------------------------------- SECTION COVER ----------------------------------------------  */
+
+
+.cover{
+    background-image: url("../../assets/pokemon-wallpaper-preview.jpg");
+    background-position: center;
+    background-size: cover;
+    height: 50vh;
+    border-radius: 10px;
+    margin: 2rem 80px;
+    border-radius: 20px;
+ 
+}
+.cover-overlay{
+    background: rgba(0, 0, 0, 0.151);
+    height: 100%;
+    color: var(--accent-color);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 20px;
+}
+
+.cover-overlay h1 {
+    font-size: 60px;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #fdffd6;
+    font-weight: 800;
+}
+
+
+
+
+/*  --------------------------------------- ITEM STORE NAV BAR ----------------------------------------------  */
+
+.itemNav{
+    padding: 2rem 80px;
+
+}
+
+.NAVIGATION{
+    padding: 20px;
+    border-radius: 30px;
+    background-color: #007bff;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.NAVIGATION a{
+    padding: 0px 1rem  ;
+    color: #fdffd6;
+    font-size: 30px;
+    font-weight: 800;
+    text-decoration: none;
+    list-style: none;
+    transition: 0.2s;
+    display: inline-block;
+    position: relative;
+    text-shadow: 2px 2px 6px #0000008a;
+ 
+}
+
+.NAVIGATION a::after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 4px;
+    left: 50%;
+    position: absolute;
+    background: #00000060;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+}
+
+.NAVIGATION a:hover::after {
+    width: 100%; /* Expands to full width */
+    left: 0; /* Aligns it from the start */
+   
+}
+
+@media screen and (max-height: 300px) {
+	ul {
+		margin-top: 40px;
+	}
+}
+
+/*  --------------------------------------- NAVBAR PREFERENCE ----------------------------------------------  */
+
