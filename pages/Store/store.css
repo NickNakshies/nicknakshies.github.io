@@ -115,6 +115,7 @@ div.main-window {
     display: flex;
     justify-content: center;
     align-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.559);
 }
 .NAVIGATION a{
     padding: 0px 1rem  ;
@@ -156,4 +157,218 @@ div.main-window {
 }
 
 /*  --------------------------------------- NAVBAR PREFERENCE ----------------------------------------------  */
+  /* PREF */
+  .pref-list {
+    margin-top: 20px;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 90px;
+    align-items: center;
+    width: 100%;
+}
 
+.pref-left {
+    display: flex;
+    gap: 15px;
+}
+
+/* General Style for All Buttons */
+.pref-item {
+    padding: 5px 35px;
+    border: 2px solid #ffe67d; /* Default border color */
+    font-size: 25px;
+    border-radius: 50px;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    background-color: transparent;
+    color: #fdffd6;
+    
+}
+.pref-item:hover {
+    background-color: #3730303e; /* Yellow background */
+
+}
+
+/* Style Specifically for "Price Range" */
+.has-dropdown {
+    background-color: #ffe67d; /* Yellow background */
+    border: 2px solid #ffe67d; /* Matching border */
+    color: #9e3030; /* Dark text for contrast */
+    padding: 5px 35px;
+    border-radius: 50px;
+    font-size: 25px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+
+.pref-item a {
+    text-decoration: none;
+    color: #fdffd6;
+    font-weight: 500;
+    text-shadow: 2px 2px 6px #0000008a;
+
+
+}
+.pref-item:hover {
+    color: #b5b5b5;
+}
+
+/* Price Range Text Color */
+.has-dropdown .price-range a {
+    color: #fdffd6 !important;
+    font-weight: 500;
+
+}
+.has-dropdown {
+    position: relative;
+}
+
+.dropdown-pref {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px 0;
+    list-style: none;
+    width: 200px;
+}
+.dropdown-option {
+    padding: 10px;
+    text-align: center;
+}
+.dropdown-option a {
+    text-decoration: none;
+    color: #000000;
+    display: block;
+    width: 100%;
+}
+.dropdown-option:hover {
+    background: #f0f0f0;
+}
+
+.has-dropdown:hover .dropdown-pref {
+    display: block;
+}
+/* Hover Effect for Price Range */
+.has-dropdown:hover {
+    background-color: #ffcc33; /* Slightly darker yellow */
+
+}
+
+/* Dropdown Icon */
+.has-dropdown .price-range i {
+    color: #fdffd6 !important; /* Change icon color */
+}
+/*  --------------------------------------- ITEM STORE ----------------------------------------------  */
+
+.item-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Ensures equal spacing */
+    gap: 20px;
+    padding: 20px 80px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.card {
+    width: calc(33.33% - 20px); /* 3 per row */
+    min-width: 350px; /* Prevents shrinking too much */
+    background: linear-gradient(to bottom, #fdffd6 55%, #007bff 45%);
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 25px;
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .card {
+        width: calc(50% - 2px); /* 2 per row */
+    }
+}
+@media (max-width: 768px) {
+    .card {
+        width: 100%; /* 1 per row */
+    }
+}
+
+.main-image {
+    width: 120px;
+    height: 120px;
+    display: block;
+    margin: 0 auto;
+}
+
+.small-images {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+.small-images img {
+    width: 30px;
+    height: 30px;
+}
+
+.card h3 {
+    margin: 10px 0;
+    padding-top: 20px;
+    font-size: 20px;
+    font-weight: 800;
+    color: #f0f0f0;
+}
+.card p {
+    font-size: 16px;
+    font-weight: 500;
+    color: #f0f0f0b2;
+}
+
+.price-button {
+    background: #d30e0e;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    padding: 10px 20px;
+    white-space: nowrap; /* Prevents text from wrapping */
+    flex-shrink: 0; /* Prevents button from shrinking */
+}
+.price-button span {
+    margin-left: 5px;
+}
+.price-button:hover {
+    background: #9a0007;
+}
+
+.card-content {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center; /* Ensures items stay aligned */
+    justify-content: space-between;
+    width: 100%;
+    text-align: left;
+    gap: 10px; /* Adds spacing */
+    flex-wrap: wrap; /* Prevents breaking */
+}
+
+.card-content div {
+    flex: 1; /* Makes text take up space */
+}
+
+.card-content button {
+    padding: 10px 30px;
+    margin: 10px 0;
+    font-size: 15px;
+}
