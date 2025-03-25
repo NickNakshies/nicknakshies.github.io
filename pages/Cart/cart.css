@@ -76,7 +76,7 @@ div.main-window {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #007bff;
+    background-color: #91c7ff;
     border-radius: 30px;
     padding: 0 2rem;
     margin-right: 1rem;
@@ -91,7 +91,7 @@ div.main-window {
     align-items: center;
     justify-content: center;
     padding: 0 2rem;
-    background-color: #007bff;
+    background-color: #91c7ff;
     border-radius: 30px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.559)
 }
@@ -114,9 +114,9 @@ div.main-window {
 }
 .poke-cart{
     width: 70%;
-    min-height: 50vh; 
+    min-height: 50vh;
     height: auto;
-    background-color: #007bff9f;
+    background-color: #d2e8ff9f;
     border-radius: 30px;
     margin-right: 1rem;
 
@@ -148,7 +148,7 @@ div.main-window {
     width: 30%;  /* Same as .nav-cart-2 */
     flex-shrink: 0; /* Prevent shrinking */
     height: auto;  
-    background-color: #007bff;
+    background-color: #91c7ff;
     border-radius: 30px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.559);
 }

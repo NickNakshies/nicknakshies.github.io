@@ -279,7 +279,7 @@ div.main-window {
 .card {
     width: calc(33.33% - 20px); /* 3 per row */
     min-width: 350px; /* Prevents shrinking too much */
-    background: linear-gradient(to bottom, #fdffd6 55%, #007bff 45%);
+    background: linear-gradient(to bottom, #fdffd6 55%, #91c7ff 45%);
     border-radius: 25px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     padding: 25px;
