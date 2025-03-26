@@ -103,8 +103,25 @@ div.main-window {
 
 .itemNav{
     padding: 2rem 80px;
-
+    position: sticky;
+    top: 0;
+    z-index: 9999; /* Ensures it stays above other elements */
+    height: fit-content;
+    backdrop-filter: blur(10px); /* Apply blur effect */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    transition: all 0.3s ease-in-out;
 }
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow-x: hidden; /* Allow vertical scrolling */
+    scroll-behavior: smooth;
+}
+.main-window {
+    height: auto;
+    overflow: visible; /* Ensure it doesn't block sticky behavior */
+}
+
 
 .NAVIGATION{
     padding: 20px;
@@ -238,7 +255,7 @@ div.main-window {
     z-index: 9999;
 }
 .dropdown-option {
-    padding: 50px ;
+    padding: 20px ;
     text-align: center;
     z-index: 1000 !important;
 }
@@ -246,8 +263,10 @@ div.main-window {
 .dropdown-option a {
     text-decoration: none;
     color: #000000;
+    font-weight: 500;
     display: block;
     width: 100%;
+    text-shadow: none;
 }
 .dropdown-option:hover {
     background: #f0f0f0;
@@ -290,7 +309,16 @@ div.main-window {
     display: flex;
     flex-direction: column;
     align-items: center;
+    transform: 0 3 ease;
+    transition: transform 0.3s ease;
+    cursor: pointer;
 }
+.card:hover {
+    transform:scale(1.02);
+    box-shadow: 12px 12px 20px rgba(0, 0, 0, 0.2);
+}
+
+
 
 /* Responsive adjustments */
 @media (max-width: 1024px) {
@@ -320,6 +348,12 @@ div.main-window {
 .small-images img {
     width: 30px;
     height: 30px;
+}
+
+#small-images-hide img{
+
+    visibility: none;
+    opacity: 0;
 }
 
 .card h3 {
