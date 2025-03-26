@@ -13,13 +13,12 @@
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="./store.css">
     
-    
 </head>
 <body>
     <div class="main-window">
         <!-- NAVBAR START -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light px-4 mt-0 ms-3">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="../../Boilerplate/index.html">
                 <img src="../../assets/Logo.png" alt="Logo" >
             </a>
 
@@ -33,7 +32,7 @@
 
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-0 mt-2">
                     <li class="nav-item fs-3 me-5 ms-4">
-                        <a class="nav-link fw-bold" href="#">Featured</a>
+                        <a class="nav-link fw-bold" href="../../Boilerplate/index.html">Featured</a>
                     </li>
 
                     <li class="nav-item dropdown fs-3 ms-4 me-2">
@@ -41,7 +40,7 @@
                             Store
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="storeDropdown">
-                            <li><a class="dropdown-item" href="/pages/Store/store.html">Item Boxes</a></li>
+                            <li><a class="dropdown-item" href="#">Item Boxes</a></li>
                             <li><a class="dropdown-item" href="#">Poke Coins</a></li>
                             <li><a class="dropdown-item" href="#">Daily Bundles</a></li>
                         </ul>
@@ -55,7 +54,7 @@
 
                 <ul class="navbar-nav mb-2 mb-lg-0 me-5">
                     <li class="nav-item me-4 mt-1">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="../Cart/cart.html">
                             <i class="bi bi-cart-fill override-icon rounded-pill bg-primary px-5 py-1" style="font-size: 2.8rem;"></i>
                         </a>
                     </li>
@@ -92,28 +91,308 @@
         <div class="itemNav">
             <ul class="NAVIGATION">
                 <li><a href="#">Featured</a></li>
-                <li><a href="#">Item Box</a></li>
-                <li><a href="#">Daily Bundles</a></li>
-                <li><a href="#">PokeCoins</a></li>
+                <li><a href="#item-boxes">Item Box</a></li>
+                <li><a href="#Poke-coins">PokeCoins</a></li>
+                <li><a href="#Daily-bundles">Daily Bundles</a></li>
             </ul>
         </div>
 
-
+<!-- PREFERENCES AND PRICE RANGE -->
+        <nav>
+        <ul class="pref-list">
+            <div class="pref-left">
+                <li class="pref-item"><a href="#">Popular</a></li>
+                <li class="pref-item"><a href="#">Limited Time</a></li>
+            </div>
+            <li class="pref-item has-dropdown">
+                <div class="price-range"><a href="#">Price Range <span><i class='bx bxs-down-arrow' style='color:#ffffff' ></i></span></a> </div>
+                <ul class="dropdown-pref" id="price-dropdown">
+                    <li class="dropdown-option"><a href="#">₱50 - ₱90</a></li>
+                    <li class="dropdown-option"><a href="#">₱100 - ₱300</a></li>
+                    <li class="dropdown-option"><a href="#">₱400 and above</a></li>
+                </ul>
+            </li>
+        </ul>
+        </nav>
 
 
        <!-- ITEM BOXES -->
 
-        <section class="item-boxes">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="item-box">
-                            <img src="../../assets/ItemBox1.png" alt="Item Box 1">
-                            <h3>Item Box 1</h3>
-                            <p>Contains 5 Poke Balls, 5 Great Balls, 5 Ultra Balls, 5 Razz Berries, 5 Pinap Berries, 5 Golden Razz Berries, 5 Incense, 5 Lucky Eggs, 5 Star Pieces, 5 Lure Modules
+        <section class="item-boxes" id="item-boxes">
+            <div class="card">
+                <img class="main-image" src="../../assets/Bug Out Ultra Ticket Box.png" alt="Main Item Box">
+                <div class="small-images">
+                    <img src="../../assets/Ticket (2).png" alt="Small Item 1">
+                    <span>x 1</span>
+                    <img src="../../assets/Rare Candy.png" alt="Small Item 2">
+                    <span>x 2</span>
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3>Bug Out Ultra Ticket Box</h3>
+                        <p>Can only be purchased 1 time</p>
+                    </div>
+                    <button class="price-button">₱ <span>59</span></button>
+                </div>
+            </div>
+
+            <div class="card">
+                <img class="main-image" src="../../assets/1,300 PokéCoins.webp" alt="Main Item Box">
+                <div class="small-images">
+                    <img src="../../assets/600 PokéCoins.webp" alt="Small Item 1">
+                    <img src="../../assets/600 PokéCoins.webp" alt="Small Item 2">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3>Festival of Colors Ultra Ticket Box</h3>
+                        <p>Can only be purchased 1 time</p>
+                    </div>
+                    <button class="price-button">₱ <span>59</span></button>
+                </div>
+            </div>
+
+            <div class="card">
+                <img class="main-image" src="../../assets/1,300 PokéCoins.webp" alt="Main Item Box">
+                <div class="small-images">
+                    <img src="../../assets/600 PokéCoins.webp" alt="Small Item 1">
+                    <img src="../../assets/600 PokéCoins.webp" alt="Small Item 2">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3>Festival of Colors Ultra Ticket Box</h3>
+                        <p>Can only be purchased 1 time</p>
+                    </div>
+                    <button class="price-button">₱ <span>59</span></button>
+                </div>
+            </div>
+
+            <div class="card">
+                <img class="main-image" src="../../assets/1,300 PokéCoins.webp" alt="Main Item Box">
+                <div class="small-images">
+                    <img src="../../assets/600 PokéCoins.webp" alt="Small Item 1">
+                    <img src="../../assets/600 PokéCoins.webp" alt="Small Item 2">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3>Festival of Colors Ultra Ticket Box</h3>
+                        <p>Can only be purchased 1 time</p>
+                    </div>
+                    <button class="price-button">₱ <span>59</span></button>
+                </div>
+            </div>
+            <div class="card">
+                <img class="main-image" src="../../assets/1,300 PokéCoins.webp" alt="Main Item Box">
+                <div class="small-images">
+                    <img src="../../assets/600 PokéCoins.webp" alt="Small Item 1">
+                    <img src="../../assets/600 PokéCoins.webp" alt="Small Item 2">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3>Festival of Colors Ultra Ticket Box</h3>
+                        <p>Can only be purchased 1 time</p>
+                    </div>
+                    <button class="price-button">₱ <span>59</span></button>
+                </div>
+            </div>
+            <div class="card">
+                <img class="main-image" src="../../assets/1,300 PokéCoins.webp" alt="Main Item Box">
+                <div class="small-images">
+                    <img src="../../assets/600 PokéCoins.webp" alt="Small Item 1">
+                    <img src="../../assets/600 PokéCoins.webp" alt="Small Item 2">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3>Festival of Colors Ultra Ticket Box</h3>
+                        <p>Can only be purchased 1 time</p>
+                    </div>
+                    <button class="price-button">₱ <span>59</span></button>
+                </div>
+            </div>
+            <div class="card">
+                <img class="main-image" src="../../assets/1,300 PokéCoins.webp" alt="Main Item Box">
+                <div class="small-images">
+                    <img src="../../assets/600 PokéCoins.webp" alt="Small Item 1">
+                    <img src="../../assets/600 PokéCoins.webp" alt="Small Item 2">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3>Festival of Colors Ultra Ticket Box</h3>
+                        <p>Can only be purchased 1 time</p>
+                    </div>
+                    <button class="price-button">₱ <span>59</span></button>
+                </div>
+            </div>
+            <div class="card">
+                <img class="main-image" src="../../assets/1,300 PokéCoins.webp" alt="Main Item Box">
+                <div class="small-images">
+                    <img src="../../assets/600 PokéCoins.webp" alt="Small Item 1">
+                    <img src="../../assets/600 PokéCoins.webp" alt="Small Item 2">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3>Festival of Colors Ultra Ticket Box</h3>
+                        <p>Can only be purchased 1 time</p>
+                    </div>
+                    <button class="price-button">₱ <span>59</span></button>
+                </div>
+            </div>
+            <div class="card">
+                <img class="main-image" src="../../assets/1,300 PokéCoins.webp" alt="Main Item Box">
+                <div class="small-images">
+                    <img src="../../assets/600 PokéCoins.webp" alt="Small Item 1">
+                    <img src="../../assets/600 PokéCoins.webp" alt="Small Item 2">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3>Festival of Colors Ultra Ticket Box</h3>
+                        <p>Can only be purchased 1 time</p>
+                    </div>
+                    <button class="price-button">₱ <span>59</span></button>
+                </div>
+            </div>
+            <div class="card">
+                <img class="main-image" src="../../assets/1,300 PokéCoins.webp" alt="Main Item Box">
+                <div class="small-images">
+                    <img src="../../assets/600 PokéCoins.webp" alt="Small Item 1">
+                    <img src="../../assets/600 PokéCoins.webp" alt="Small Item 2">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3>Festival of Colors Ultra Ticket Box</h3>
+                        <p>Can only be purchased 1 time</p>
+                    </div>
+                    <button class="price-button">₱ <span>59</span></button>
+                </div>
+            </div>
+
+        </section>
+   
+        <!-- ITEM STORE  NAVIGATION BAR-->
+        <div class="itemNav">
+            <ul class="NAVIGATION">
+                <li><a href="#">Featured</a></li>
+                <li><a href="#item-boxes">Item Box</a></li>
+                <li><a href="#Poke-coins">PokeCoins</a></li>
+                <li><a href="#Daily-bundles">Daily Bundles</a></li>
+            </ul>
+        </div>
+
+        <!-- PokeCoins -->
+        <section class="item-boxes" id="Poke-coins">
+            <div class="card">
+                <img class="main-image" src="../../assets/110 PokéCoins.webp" alt="Main Item Box">
+                <div class="small-images">
+                    <img src="../../assets/600 PokéCoins.webp" alt="Small Item 1">
+                    <img src="../../assets/600 PokéCoins.webp" alt="Small Item 2">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3>Festival of Colors Ultra Ticket Box</h3>
+                        <p>Can only be purchased 1 time</p>
+                    </div>
+                    <button class="price-button">₱ <span>59</span></button>
+                </div>
+            </div>
+            <div class="card">
+                <img class="main-image" src="../../assets/1,300 PokéCoins.webp" alt="Main Item Box">
+                <div class="small-images">
+                    <img src="../../assets/600 PokéCoins.webp" alt="Small Item 1">
+                    <img src="../../assets/600 PokéCoins.webp" alt="Small Item 2">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3>Festival of Colors Ultra Ticket Box</h3>
+                        <p>Can only be purchased 1 time</p>
+                    </div>
+                    <button class="price-button">₱ <span>59</span></button>
+                </div>
+            </div>
+            <div class="card">
+                <img class="main-image" src="../../assets/1,300 PokéCoins.webp" alt="Main Item Box">
+                <div class="small-images">
+                    <img src="../../assets/600 PokéCoins.webp" alt="Small Item 1">
+                    <img src="../../assets/600 PokéCoins.webp" alt="Small Item 2">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3>Festival of Colors Ultra Ticket Box</h3>
+                        <p>Can only be purchased 1 time</p>
+                    </div>
+                    <button class="price-button">₱ <span>59</span></button>
+                </div>
+            </div>
+
+            <div class="card">
+                <img class="main-image" src="../../assets/1,300 PokéCoins.webp" alt="Main Item Box">
+                <div class="small-images">
+                    <img src="../../assets/600 PokéCoins.webp" alt="Small Item 1">
+                    <img src="../../assets/600 PokéCoins.webp" alt="Small Item 2">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3>Festival of Colors Ultra Ticket Box</h3>
+                        <p>Can only be purchased 1 time</p>
+                    </div>
+                    <button class="price-button">₱ <span>59</span></button>
+                </div>
+            </div>
+            <div class="card">
+                <img class="main-image" src="../../assets/1,300 PokéCoins.webp" alt="Main Item Box">
+                <div class="small-images">
+                    <img src="../../assets/600 PokéCoins.webp" alt="Small Item 1">
+                    <img src="../../assets/600 PokéCoins.webp" alt="Small Item 2">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3>Festival of Colors Ultra Ticket Box</h3>
+                        <p>Can only be purchased 1 time</p>
+                    </div>
+                    <button class="price-button">₱ <span>59</span></button>
+                </div>
+            </div>
+            <div class="card">
+                <img class="main-image" src="../../assets/1,300 PokéCoins.webp" alt="Main Item Box">
+                <div class="small-images">
+                    <img src="../../assets/600 PokéCoins.webp" alt="Small Item 1">
+                    <img src="../../assets/600 PokéCoins.webp" alt="Small Item 2">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3>Festival of Colors Ultra Ticket Box</h3>
+                        <p>Can only be purchased 1 time</p>
+                    </div>
+                    <button class="price-button">₱ <span>59</span></button>
+                </div>
+            </div>
+    
         </section>
 
+        <!-- ITEM STORE  NAVIGATION BAR-->
+        <div class="itemNav">
+            <ul class="NAVIGATION">
+                <li><a href="#">Featured</a></li>
+                <li><a href="#item-boxes">Item Box</a></li>
+                <li><a href="#Poke-coins">PokeCoins</a></li>
+                <li><a href="#Daily-bundles">Daily Bundles</a></li>
+            </ul>
+        </div>
 
+        <!-- PokeCoins -->
+        <section class="item-boxes" id="Daily-bundles">
+            <div class="card">
+                <img class="main-image" src="../../assets/1,300 PokéCoins.webp" alt="Main Item Box">
+                <div class="small-images">
+                    <img src="../../assets/600 PokéCoins.webp" alt="Small Item 1">
+                    <img src="../../assets/600 PokéCoins.webp" alt="Small Item 2">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3>Festival of Colors Ultra Ticket Box</h3>
+                        <p>Can only be purchased 1 time</p>
+                    </div>
+                    <button class="price-button">₱ <span>59</span></button>
+                </div>
+            </div>
 
 
 
@@ -124,6 +403,39 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 
     <footer class="bg-light text-dark py-4" id="footer">
         <div class="container text-center">
