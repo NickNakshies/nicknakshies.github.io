@@ -68,8 +68,7 @@
                     </li>
                     <li class="nav-item me-1">
                         <a class="nav-link" href="../pages/Profile/profile.html">
-                            <div class="d-flex align-items-center rounded-pill mt-1 px-4 py-1" style="gap: 10px; background-color: #cbdf72;">
-                                <i class="mb-0 text-light fw-bold fs-5"></i>Sign In
+                            <div class="d-flex align-items-center rounded-pill mt-1 px-4 py-1 fw-bold" style="gap: 10px; background-color: #cbdf72;">Sign In
                                 <i class="bi bi-person-circle fs-1 text-light"></i>
                             </div>
                         </a>   
@@ -125,10 +124,11 @@
                             </div>
                         </div>
                     </div>
+              <form id="formValidate">
                     <div class="row">
                         <div class="col">
                             <label style="color: #fdffd6; text-shadow: 2px 2px 5px #5c5c5c;">Email Address</label><br>
-                            <input type="text" class="form-control" id="email" placeholder="Email Address" required style="width: 40%;">
+                            <input type="email" class="form-control" id="email" placeholder="Email Address" required style="width: 40%;">
                         </div>
                     </div>                    
                 </div>
@@ -139,9 +139,10 @@
                         <a href="#" class="text-danger profile-link" ><i class="bi bi-power me-3"></i>Log Out</a>
                     </div>    
                     <div class="col offset-lg-6">
-                        <a href="javascript:void(0);" class="btn ms-3 rounded-pill bg-primary text-light fs-5 px-4 py-3 fw-bold shadow viewOrder" onclick="saveUserData()"><i class="bi bi-floppy me-2"></i> Save Settings</a>
+                        <button type="submit" class="btn ms-3 rounded-pill bg-primary text-light fs-5 px-4 py-3 fw-bold shadow viewOrder" onclick="saveUserData()"><i class="bi bi-floppy me-2"></i> Save Settings</button>
                     </div>       
                 </div>
+              </form>
             </div>
         </div>
     </div>
@@ -177,6 +178,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     <script>
+        
         document.addEventListener("DOMContentLoaded", function() {
             loadSavedData();
         });
@@ -189,11 +191,12 @@
 
             if (savedImage) document.getElementById("set-pic").style.backgroundImage = `url('${savedImage}')`;
             if (savedName) document.getElementById("name").value = savedName;
-            if (savedEmail) document.getElementById("email").value = savedEmail;
+            if (savedEmail) document.getElementById("email").value = savedEmail.trim();
             if (savedPassword) document.getElementById("password").value = savedPassword;
         }
 
         function loadFile(event) {
+            event.preventDefault();
             let reader = new FileReader();
             reader.onload = function() {
                 let profileImage = reader.result;
@@ -204,23 +207,31 @@
         }
 
         function saveUserData() {
+            event.preventDefault();
+            let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
             let profileImage = document.getElementById("set-pic").style.backgroundImage.replace(/url\(["']?/, '').replace(/["']?\)$/, '');
             let name = document.getElementById("name").value;
-            let email = document.getElementById("email").value;
+            let emailInput = document.getElementById("email");
+            let email = emailInput.value.trim();
             let password = document.getElementById("password").value;
 
-            if(name == "" || password == "" || email == "" || email != ".com"){
+            if (name == "" || password == "" || email == ""){
                 alert("Incomplete fields, Try Again.")
                 return;
-            } else{
+            } else if (!emailInput.checkValidity() || !emailRegex.test(email)) {
+                alert("Invalid email format! Please enter a valid email.");
+                document.getElementById("email").value = "";
+                return;
+           } else {
                 localStorage.setItem("profileImage", profileImage);
                 localStorage.setItem("name", name);
                 localStorage.setItem("email", email);
                 localStorage.setItem("password", password);
-
                 alert("Profile updated successfully!");
-            }
+           }
         }
+
+        document.getElementById("formValidate").addEventListener("submit", saveUserData);
 
         document.getElementById("togglePassword").addEventListener("click", function () {
             let passwordInput = document.getElementById("password");
