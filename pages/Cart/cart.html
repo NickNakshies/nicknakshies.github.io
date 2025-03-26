@@ -12,12 +12,16 @@
     <!--CSS natin-->
     <link rel="stylesheet" href="../Cart/cart.css">
     
+    
+    <!--BoxIcon natin-->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+
 </head>
 <body>
     <div class="main-window">
         <!-- NAVBAR START -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light px-4 mt-0 ms-3">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="../../Boilerplate/index.html">
                 <img src="../../assets/Logo.png" alt="Logo" >
             </a>
 
@@ -31,7 +35,7 @@
 
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-0 mt-2">
                     <li class="nav-item fs-3 me-5 ms-4">
-                        <a class="nav-link fw-bold" href="#">Featured</a>
+                        <a class="nav-link fw-bold" href="../../Boilerplate/index.html">Featured</a>
                     </li>
 
                     <li class="nav-item dropdown fs-3 me-4">
@@ -39,9 +43,9 @@
                             Store
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="storeDropdown">
-                            <li><a class="dropdown-item" href="#">Item Boxes</a></li>
-                            <li><a class="dropdown-item" href="#">Poke Coins</a></li>
-                            <li><a class="dropdown-item" href="#">Daily Bundles</a></li>
+                            <li><a class="dropdown-item" href="../../pages/Store/store.html">Item Boxes</a></li>
+                            <li><a class="dropdown-item" href="../../pages/Store/store.html">Poke Coins</a></li>
+                            <li><a class="dropdown-item" href="../../pages/Store/store.html">Daily Bundles</a></li>
                         </ul>
                     </li>
 
@@ -90,6 +94,10 @@
                     <p>Order Summary</p>
                 </div>
             </div>
+
+ 
+
+
         </section>
 
 
@@ -104,20 +112,67 @@
                     <p>Price</p>
                     <p>Total</p>
                 </div>
+
+
+                <div class="product">
+
+                    <div class="product-image">
+                        <img src="../../assets/Max Revive.png" alt="">
+                    </div>
+    
+                    <div class="product-details">
+                        <h5>Max Revive</h5>
+                        <h6><a href="">Remove</a></h6>
+                    </div>
+
+                    <div class="product-quantity">
+
+                        <button><i class='bx bx-minus'></i></button>
+                        <input type="text" value="1">
+                        <button><i class='bx bx-plus'></i></button>
+                    </div>
+
+                    <div class="product-price">
+                        <p>₱ 99</p>
+                    </div>
+
+                    <div class="product-total">
+                        <p>₱ 99</p>
+                    </div>
+    
+                </div>
+
+            <div class="line">
+                <hr>
+            </div>
+
+            <div class="remove-btn">
+                <button>Remove</button>
             </div>
 
 
+
+
+
+
+
+            </div>
             <div class="cart-summary">
                 <div class="cart-header">
                     <div><p>Items <span>3</span>  </div>
                      <div><p>₱ 594</p> </div>
                 </div>
+
+                
                 <div class="cart-section">
                     <label for="shipping"><p>Shipping</p></label>
                     <select id="shipping">
                         <option>Standard Delivery</option>
                         <option>Express Delivery</option>
                     </select>
+
+
+
                 </div>
                 
                 <div class="cart-section">
@@ -133,6 +188,10 @@
                 <button class="checkout-btn">Check Out</button>
 
             </div>
+
+
+
+
         </div>
 
 

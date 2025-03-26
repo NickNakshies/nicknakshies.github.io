@@ -117,6 +117,7 @@ div.main-window {
     justify-content: center;
     align-content: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.559);
+
 }
 .NAVIGATION a{
     padding: 0px 1rem  ;
@@ -223,6 +224,7 @@ div.main-window {
 }
 .has-dropdown {
     position: relative;
+    z-index: 1000;
 }
 
 .dropdown-pref {
@@ -236,11 +238,14 @@ div.main-window {
     padding: 20px 0;
     list-style: none;
     width: 200px;
+    z-index: 9999;
 }
 .dropdown-option {
-    padding: 10px;
+    padding: 50px ;
     text-align: center;
+    z-index: 1000 !important;
 }
+
 .dropdown-option a {
     text-decoration: none;
     color: #000000;
