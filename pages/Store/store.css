@@ -108,9 +108,9 @@ div.main-window {
     z-index: 9999; /* Ensures it stays above other elements */
     height: fit-content;
     backdrop-filter: blur(10px); /* Apply blur effect */
-    -webkit-backdrop-filter: blur(10px); /* Safari support */
     transition: all 0.3s ease-in-out;
 }
+
 html, body {
     height: 100%;
     margin: 0;
@@ -285,6 +285,50 @@ html, body {
 .has-dropdown .price-range i {
     color: #fdffd6 !important; /* Change icon color */
 }
+
+/*  */
+
+
+.label-name{
+    width: 100%;
+    padding: 0px 95px;
+    padding-top: 10rem;
+}
+.label-name-1{
+    width: 100%;
+    padding: 0px 95px;
+    padding-top: 5rem;
+}
+
+.label-name-1 h1{
+    font-size: 40px;
+    font-weight: 800;
+    color: #fdffd6;
+    text-align: left;
+    margin-bottom: 1rem;
+    font-weight: 800;
+    text-shadow: 2px 2px 6px #0000008a;
+}
+.label-name h1{
+    font-size: 40px;
+    font-weight: 800;
+    color: #fdffd6;
+    text-align: left;
+    margin-bottom: 1rem;
+    font-weight: 800;
+    text-shadow: 2px 2px 6px #0000008a;
+}
+
+
+
+
+
+
+
+
+
+
+
 /*  --------------------------------------- ITEM STORE ----------------------------------------------  */
 
 .item-boxes {
@@ -309,8 +353,8 @@ html, body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    transform: 0 3 ease;
-    transition: transform 0.3s ease;
+    transform: 0 8 ease;
+    transition: transform 0.5s ease;
     cursor: pointer;
 }
 .card:hover {
