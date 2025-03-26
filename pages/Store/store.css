@@ -356,6 +356,7 @@ div.main-window {
 }
 
 .card-content {
+    min-height: 100px;
     margin-top: 2rem;
     display: flex;
     align-items: center; /* Ensures items stay aligned */
