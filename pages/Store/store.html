@@ -104,8 +104,8 @@
                 <li class="pref-item"><a href="#">Popular</a></li>
                 <li class="pref-item"><a href="#">Limited Time</a></li>
             </div>
-            <li class="pref-item has-dropdown">
-                <div class="price-range"><a href="#">Price Range <span><i class='bx bxs-down-arrow' style='color:#ffffff' ></i></span></a> </div>
+            <li class="pref-item has-dropdown price-range">
+                <a href="#">Price Range <span><i class='bx bxs-down-arrow' style='color:#ffffff' ></i></span></a>            
                 <ul class="dropdown-pref" id="price-dropdown">
                     <li class="dropdown-option"><a href="#">₱50 - ₱90</a></li>
                     <li class="dropdown-option"><a href="#">₱100 - ₱300</a></li>
@@ -114,6 +114,30 @@
             </li>
         </ul>
         </nav>
+        <!-- SCRIPT FOR PRICE RANGE-->
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const priceRange = document.querySelector(".price-range");
+                const dropdown = document.getElementById("price-dropdown");
+            
+                if (!priceRange || !dropdown) {
+                    console.error("Elements not found!");
+                    return;
+                }
+            
+                priceRange.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    dropdown.classList.toggle("show");
+                });
+            
+                document.addEventListener("click", function (event) {
+                    if (!priceRange.contains(event.target) && !dropdown.contains(event.target)) {
+                        dropdown.classList.remove("show");
+                    }
+                });
+            });
+            </script>
+            
        <!-- ITEM BOXES -->
 
         <section class="item-boxes" id="item-boxes">
@@ -468,21 +492,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     
 </body>
-<!-- SCRIPT FOR PRICE RANGE -->
- <script>
-document.addEventListener("DOMContentLoaded", function () {
-    const priceRange = document.querySelector(".price-range");
-    const dropdown = document.getElementById("price-dropdown");
-
-    priceRange.addEventListener("click", function (event) {
-        event.preventDefault(); // Prevent default anchor behavior
-        dropdown.classList.toggle("show");
-    });
-    document.addEventListener("click", function (event) {
-        if (!priceRange.contains(event.target) && !dropdown.contains(event.target)) {
-            dropdown.classList.remove("show");
-        }
-    });
-});
-</script>
 </html>
