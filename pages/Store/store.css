@@ -266,6 +266,9 @@ div.main-window {
 .has-dropdown .price-range i {
     color: #fdffd6 !important; /* Change icon color */
 }
+.dropdown-pref.show {
+    display: block;
+}
 /*  --------------------------------------- ITEM STORE ----------------------------------------------  */
 
 .item-boxes {
@@ -356,7 +359,7 @@ div.main-window {
 }
 
 .card-content {
-    min-height: 100px;
+    min-height: 100px; /* Adjust as needed */    
     margin-top: 2rem;
     display: flex;
     align-items: center; /* Ensures items stay aligned */
