@@ -1,0 +1,71 @@
+.profile-window{
+    max-width: 85%;
+    height: 70vh;
+    border-radius: 55px;
+    background: rgb(187,220,255);
+    background: linear-gradient(0deg, rgb(212, 227, 255) 0%, rgb(134, 182, 226) 100%);
+    overflow: hidden;
+    position: relative;
+}
+
+.profile-window::-webkit-scrollbar {
+    display: none;
+  }
+
+.profile-link {
+    color: #fdffd6;
+    text-shadow: 2px 2px 5px #727272;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.profile-link:hover {
+    opacity: 0.5;
+}
+
+.username-fade{
+    color:rgba(255, 255, 255, 0.562)
+}
+
+.viewOrder{
+    transition: 0.3s ease;
+}
+
+.viewOrder:hover{
+    transform:scale(1.1)
+}
+
+/* Profile Picture */
+.profile-pic {
+    border-radius: 50%;
+    height: 185px;
+    width: 185px;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: multiply;
+    vertical-align: middle;
+    text-align: center;
+    color: transparent;
+    transition: all .3s ease;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.profile-pic:hover {
+    background-color: rgba(0,0,0,.5);
+    z-index: 10000;
+    color: #fff;
+    transition: all .3s ease;
+    text-decoration: none;
+}
+
+.profile-pic span {
+    display: inline-block;
+    padding-top: 4.5em;
+    padding-bottom: 4.5em;
+}
+
+form input[type="file"] {
+    display: none;
+    cursor: pointer;
+ }
