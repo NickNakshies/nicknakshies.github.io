@@ -96,8 +96,15 @@ div.main-window {
     font-weight: 800;
 }
 
+.carousel-inner {
+    width: 100%;
+    height: 600px; /* Set your preferred height */
+}
 
-
+.carousel-item img {
+    object-fit: cover;
+    border-radius: 20px;
+}
 
 /*  --------------------------------------- ITEM STORE NAV BAR ----------------------------------------------  */
 
