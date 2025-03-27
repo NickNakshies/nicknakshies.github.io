@@ -126,20 +126,83 @@ document.addEventListener("DOMContentLoaded", function () {
     const priceRangeToggle = document.getElementById("price-range-toggle");
     const dropdown = document.getElementById("price-dropdown");
     const items = document.querySelectorAll(".card");
-    const navLinks = document.querySelectorAll(".pref-item a[href='#']"); 
+    const navItems = document.querySelectorAll(".pref-item");
 
-    if (!priceRangeToggle || !dropdown || items.length === 0 || navLinks.length < 3) {
+    if (!priceRangeToggle || !dropdown || items.length === 0 || navItems.length < 3) {
         console.error("Elements not found or no items available!");
         return;
     }
 
-    const allNav = navLinks[0]; 
-    const popularNav = navLinks[1]; 
-    const limitedTimeNav = navLinks[2];
+    const allNav = navItems[0];
+    const popularNav = navItems[1];
+    const limitedTimeNav = navItems[2];
+    let activeFilter = "all";  
+    let activePriceRange = null;  
 
     function setActiveNav(selectedNav) {
-        navLinks.forEach(nav => nav.parentElement.classList.remove("active")); 
-        selectedNav.parentElement.classList.add("active");
+        navItems.forEach(nav => nav.classList.remove("active"));
+        selectedNav.classList.add("active");
+    }
+
+    function resetPriceRange() {
+        activePriceRange = null;
+        priceRangeToggle.childNodes[0].textContent = "Price Range ";
+    }
+
+    function filterItemsByCategory(category) {
+        activeFilter = category;
+        resetPriceRange(); 
+        applyFilters();
+    }
+
+    function filterItemsByPrice(range, displayText) {
+        activePriceRange = range;
+        if (activeFilter === "all" && range === "all") {
+            resetPriceRange();
+        } else {
+            priceRangeToggle.childNodes[0].textContent = displayText + " ";
+        }
+
+        applyFilters();
+    }
+
+    function applyFilters() {
+        let minPrice = 0, maxPrice = Infinity;
+
+        if (activePriceRange === "20-90") {
+            minPrice = 20;
+            maxPrice = 90;
+        } else if (activePriceRange === "100-400") {
+            minPrice = 100;
+            maxPrice = 400;
+        } else if (activePriceRange === "500-above") {
+            minPrice = 500;
+        }
+
+        items.forEach(item => {
+            const name = item.querySelector(".card-content h3")?.textContent.trim().toLowerCase();
+            const priceElement = item.querySelector(".price-button span");
+            if (!name || !priceElement) return;
+
+            const price = parseInt(priceElement.textContent.replace(/₱|,/g, ""), 10);
+            let matchesCategory = false;
+            let matchesPrice = activePriceRange ? (!isNaN(price) && price >= minPrice && price <= maxPrice) : true;
+
+            if (activeFilter === "popular") {
+                matchesCategory = name.includes("super incubator") || name.includes("egg incubator");
+            } else if (activeFilter === "limited-time") {
+                matchesCategory = (
+                    name.includes("bug out ultra ticket box") ||
+                    name.includes("go rocket box") ||
+                    name.includes("ultra raid box") ||
+                    name.includes("might and mastery box")
+                );
+            } else {
+                matchesCategory = true; 
+            }
+
+            item.style.display = (matchesCategory && matchesPrice) ? "block" : "none";
+        });
     }
 
     priceRangeToggle.addEventListener("click", function (event) {
@@ -157,79 +220,34 @@ document.addEventListener("DOMContentLoaded", function () {
         option.addEventListener("click", function (event) {
             event.preventDefault();
             const range = option.getAttribute("data-range");
-
-            dropdown.classList.remove("show"); 
-
-            if (range === "all") {
-                items.forEach(item => item.style.display = "block");
-                return;
-            }
-
-            let minPrice = 0, maxPrice = Infinity;
-            if (range === "20-90") {
-                minPrice = 20;
-                maxPrice = 90;
-            } else if (range === "100-400") {
-                minPrice = 100;
-                maxPrice = 400;
-            } else if (range === "500-above") {
-                minPrice = 500;
-            }
-
-            items.forEach(item => {
-                const priceElement = item.querySelector(".price-button span");
-                if (!priceElement) return;
-
-                const price = parseInt(priceElement.textContent.replace(/₱|,/g, ""), 10);
-                if (!isNaN(price) && price >= minPrice && price <= maxPrice) {
-                    item.style.display = "block";
-                } else {
-                    item.style.display = "none";
-                }
-            });
+            const displayText = option.textContent.trim();
+            dropdown.classList.remove("show");
+            filterItemsByPrice(range, displayText);
         });
     });
 
     allNav.addEventListener("click", function (event) {
         event.preventDefault();
         setActiveNav(allNav);
-        items.forEach(item => item.style.display = "block");
+        filterItemsByCategory("all");
     });
 
     popularNav.addEventListener("click", function (event) {
         event.preventDefault();
         setActiveNav(popularNav);
-        items.forEach(item => {
-            const itemName = item.querySelector(".card-content h3");
-            if (!itemName) return;
-
-            const nameText = itemName.textContent.trim().toLowerCase();
-            if (nameText.includes("super incubator") || nameText.includes("egg incubator")) {
-                item.style.display = "block";
-            } else {
-                item.style.display = "none";
-            }
-        });
+        filterItemsByCategory("popular");
     });
 
     limitedTimeNav.addEventListener("click", function (event) {
         event.preventDefault();
         setActiveNav(limitedTimeNav);
-        items.forEach(item => {
-            const itemName = item.querySelector(".card-content h3");
-            if (!itemName) return;
+        filterItemsByCategory("limited-time");
+    });
 
-            const nameText = itemName.textContent.trim().toLowerCase();
-            if (
-                nameText.includes("bug out ultra ticket box") ||
-                nameText.includes("go rocket box") ||
-                nameText.includes("ultra raid box") ||
-                nameText.includes("might and mastery box")
-            ) {
-                item.style.display = "block";
-            } else {
-                item.style.display = "none";
-            }
+    navItems.forEach(item => {
+        item.addEventListener("click", function () {
+            navItems.forEach(nav => nav.classList.remove("hovered"));
+            this.classList.add("hovered");
         });
     });
 });
