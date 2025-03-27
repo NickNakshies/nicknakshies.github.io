@@ -442,8 +442,9 @@ html, body {
     margin: 10px 0;
     font-size: 15px;
 }
-
-
+.mystery-box-card {
+    width: 1000px; /* Adjust width */
+}
 
 /* modal */
 
