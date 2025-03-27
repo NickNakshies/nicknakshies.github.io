@@ -202,7 +202,7 @@ html, body {
     
 }
 .pref-item:hover {
-    background-color: #3730303e; /* Yellow background */
+    background-color: #ffe67d; /* Yellow background */
 
 }
 
@@ -216,7 +216,6 @@ html, body {
     font-size: 25px;
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
-
 
 .pref-item a {
     text-decoration: none;
@@ -255,7 +254,7 @@ html, body {
     z-index: 9999;
 }
 .dropdown-option {
-    padding: 20px ;
+    padding: 50px ;
     text-align: center;
     z-index: 1000 !important;
 }
@@ -268,67 +267,29 @@ html, body {
     width: 100%;
     text-shadow: none;
 }
+.has-dropdown i {
+    font-size: 14px; /* Adjust size */
+    margin-left: 8px;
+    color: rgb(0, 0, 0);
+}
 .dropdown-option:hover {
     background: #f0f0f0;
-}
-
-.has-dropdown:hover .dropdown-pref {
-    display: block;
 }
 /* Hover Effect for Price Range */
 .has-dropdown:hover {
     background-color: #ffcc33; /* Slightly darker yellow */
 
 }
-
+.has-dropdown > a::after {
+    content: " ▼"; /* Unicode triangle */
+    font-size: 14px; /* Adjust size */
+    color: #ffffff; /* Triangle color */
+    margin-left: 8px; /* Space from text */
+}
 /* Dropdown Icon */
 .has-dropdown .price-range i {
     color: #fdffd6 !important; /* Change icon color */
 }
-
-/*  */
-
-
-.label-name{
-    width: 100%;
-    padding: 0px 95px;
-    padding-top: 10rem;
-}
-.label-name-1{
-    width: 100%;
-    padding: 0px 95px;
-    padding-top: 5rem;
-}
-
-.label-name-1 h1{
-    font-size: 40px;
-    font-weight: 800;
-    color: #fdffd6;
-    text-align: left;
-    margin-bottom: 1rem;
-    font-weight: 800;
-    text-shadow: 2px 2px 6px #0000008a;
-}
-.label-name h1{
-    font-size: 40px;
-    font-weight: 800;
-    color: #fdffd6;
-    text-align: left;
-    margin-bottom: 1rem;
-    font-weight: 800;
-    text-shadow: 2px 2px 6px #0000008a;
-}
-
-
-
-
-
-
-
-
-
-
-
 /*  --------------------------------------- ITEM STORE ----------------------------------------------  */
 
 .item-boxes {
@@ -434,6 +395,7 @@ html, body {
 }
 
 .card-content {
+    min-height: 100px;
     margin-top: 2rem;
     display: flex;
     align-items: center; /* Ensures items stay aligned */
