@@ -105,6 +105,7 @@
 <nav>
     <ul class="pref-list">
         <div class="pref-left">
+            <li class="pref-item"><a href="#">All</a></li>
             <li class="pref-item"><a href="#">Popular</a></li>
             <li class="pref-item"><a href="#">Limited Time</a></li>
         </div>
@@ -119,39 +120,40 @@
         </li>
     </ul>
 </nav>
-
-<!-- SCRIPT FOR PRICE RANGE -->
+<!-- SCRIPT FOR PRICE RANGE AND PREFERENCES -->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
     const priceRangeToggle = document.getElementById("price-range-toggle");
     const dropdown = document.getElementById("price-dropdown");
     const items = document.querySelectorAll(".card");
+    const navLinks = document.querySelectorAll(".pref-item a[href='#']"); 
 
-    if (!priceRangeToggle || !dropdown || items.length === 0) {
+    if (!priceRangeToggle || !dropdown || items.length === 0 || navLinks.length < 3) {
         console.error("Elements not found or no items available!");
         return;
     }
 
-    // Toggle dropdown on click
+    const allNav = navLinks[0]; 
+    const popularNav = navLinks[1]; 
+    const limitedTimeNav = navLinks[2];
+
     priceRangeToggle.addEventListener("click", function (event) {
         event.preventDefault();
         dropdown.classList.toggle("show");
     });
 
-    // Close dropdown when clicking outside
     document.addEventListener("click", function (event) {
         if (!priceRangeToggle.contains(event.target) && !dropdown.contains(event.target)) {
             dropdown.classList.remove("show");
         }
     });
 
-    // Handle dropdown option click
     document.querySelectorAll(".dropdown-option").forEach(option => {
         option.addEventListener("click", function (event) {
             event.preventDefault();
             const range = option.getAttribute("data-range");
 
-            dropdown.classList.remove("show"); // Close dropdown
+            dropdown.classList.remove("show"); 
 
             if (range === "all") {
                 items.forEach(item => item.style.display = "block");
@@ -180,6 +182,46 @@ document.addEventListener("DOMContentLoaded", function () {
                     item.style.display = "none";
                 }
             });
+        });
+    });
+
+    allNav.addEventListener("click", function (event) {
+        event.preventDefault();
+        items.forEach(item => {
+            item.style.display = "block"; 
+        });
+    });
+    popularNav.addEventListener("click", function (event) {
+        event.preventDefault();
+        items.forEach(item => {
+            const itemName = item.querySelector(".card-content h3");
+            if (!itemName) return;
+
+            const nameText = itemName.textContent.trim().toLowerCase();
+            if (nameText.includes("super incubator") || nameText.includes("egg incubator")) {
+                item.style.display = "block";
+            } else {
+                item.style.display = "none";
+            }
+        });
+    });
+    limitedTimeNav.addEventListener("click", function (event) {
+        event.preventDefault();
+        items.forEach(item => {
+            const itemName = item.querySelector(".card-content h3");
+            if (!itemName) return;
+
+            const nameText = itemName.textContent.trim().toLowerCase();
+            if (
+                nameText.includes("bug out ultra ticket box") ||
+                nameText.includes("go rocket box") ||
+                nameText.includes("ultra raid box") ||
+                nameText.includes("might and mastery box")
+            ) {
+                item.style.display = "block";
+            } else {
+                item.style.display = "none";
+            }
         });
     });
 });
@@ -360,12 +402,6 @@ document.addEventListener("DOMContentLoaded", function () {
         </section>
    
 
-
-
-
-
-
-        
         <!-- SEPRATE TS -->
          
         <div class="label-name" id="Poke-coins">
