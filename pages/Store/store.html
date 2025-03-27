@@ -292,6 +292,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
             </div>
 
+
+
+
+
+
+            
+<!--  -->
             <div class="card">
                 <img class="main-image" src="../../assets/GO Rocket Box.png" alt="Main Item Box">
                 <div class="small-images">
@@ -442,6 +449,43 @@ document.addEventListener("DOMContentLoaded", function () {
 
         </section>
    
+<!-- MODAL -->
+<div id="item-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img id="modal-img" src="" alt="Item Image" class="modal-image">
+        <h3 id="modal-title"></h3>
+        <p id="modal-price"></p>
+        <p>Included:</p>
+        <ul>
+            <li id="modal-item1"></li>
+            <li id="modal-item2"></li>
+        </ul>
+        <button class="buy-now">Buy Now</button>
+    </div>
+</div>
+
+<!-- JAVASCRIPT -->
+<script>
+    function openModal(imgSrc, title, price, item1, item2) {
+        document.getElementById("modal-img").src = imgSrc;
+        document.getElementById("modal-title").innerText = title;
+        document.getElementById("modal-price").innerText = price;
+        document.getElementById("modal-item1").innerText = item1;
+        document.getElementById("modal-item2").innerText = item2;
+        document.getElementById("item-modal").style.display = "block";
+    }
+
+    function closeModal() {
+        document.getElementById("item-modal").style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target.classList.contains('modal')) {
+            closeModal();
+        }
+    }
+</script>
 
         <!-- SEPRATE TS -->
          
