@@ -198,19 +198,17 @@ html, body {
     border-radius: 50px;
     transition: border-color 0.3s ease, background-color 0.3s ease;
     background-color: transparent;
-    color: #fdffd6;
+    color: #ffe67d;
     
 }
 .pref-item:hover {
-    background-color: #ffe67d; /* Yellow background */
+    background-color: #ffe67d; 
 
 }
-
-/* Style Specifically for "Price Range" */
+/* price range */
 .has-dropdown {
-    background-color: #ffe67d; /* Yellow background */
-    border: 2px solid #ffe67d; /* Matching border */
-    color: #9e3030; /* Dark text for contrast */
+    background-color: #ffe67d; 
+    border: 2px solid #ffe67d; 
     padding: 5px 35px;
     border-radius: 50px;
     font-size: 25px;
@@ -226,9 +224,6 @@ html, body {
     text-shadow: 2px 2px 6px #0000008a;
 }
 
-.pref-item:hover {
-    color: #b5b5b5;
-}
 
 /* Fix dropdown display issue */
 .dropdown-pref {
@@ -313,7 +308,9 @@ html, body {
     font-weight: 800;
     text-shadow: 2px 2px 6px #0000008a;
 }
-
+.pref-item.active {
+    background-color: #ffe67d !important;
+}
 /*  --------------------------------------- ITEM STORE ----------------------------------------------  */
 
 .item-boxes {

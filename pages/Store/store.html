@@ -137,6 +137,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const popularNav = navLinks[1]; 
     const limitedTimeNav = navLinks[2];
 
+    function setActiveNav(selectedNav) {
+        navLinks.forEach(nav => nav.parentElement.classList.remove("active")); 
+        selectedNav.parentElement.classList.add("active");
+    }
+
     priceRangeToggle.addEventListener("click", function (event) {
         event.preventDefault();
         dropdown.classList.toggle("show");
@@ -187,12 +192,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     allNav.addEventListener("click", function (event) {
         event.preventDefault();
-        items.forEach(item => {
-            item.style.display = "block"; 
-        });
+        setActiveNav(allNav);
+        items.forEach(item => item.style.display = "block");
     });
+
     popularNav.addEventListener("click", function (event) {
         event.preventDefault();
+        setActiveNav(popularNav);
         items.forEach(item => {
             const itemName = item.querySelector(".card-content h3");
             if (!itemName) return;
@@ -205,8 +211,10 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     });
+
     limitedTimeNav.addEventListener("click", function (event) {
         event.preventDefault();
+        setActiveNav(limitedTimeNav);
         items.forEach(item => {
             const itemName = item.querySelector(".card-content h3");
             if (!itemName) return;
