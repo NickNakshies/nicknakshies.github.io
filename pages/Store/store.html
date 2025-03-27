@@ -252,6 +252,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 </script>
+<!-- END SCRIPT FOR PRICE RANGE AND PREFERENCES -->
         <!-- SEPERATE TS -->
         <div class="label-name-1" >
             <h1>Item Boxes</h1>
@@ -426,8 +427,6 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
 
         </section>
-   
-
         <!-- SEPRATE TS -->
          
         <div class="label-name" id="Poke-coins">
@@ -547,46 +546,79 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
             </div>
     </div>
+<!------------------------------------------- POPUP CARD --------------------------------------------------->
+<!-- <div id="item-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+    </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const cards = document.querySelectorAll(".card");
+    const modal = document.getElementById("item-modal");
+    const modalContent = modal.querySelector(".modal-content");
 
+    if (!modal) {
+        console.error("Modal element not found!");
+        return;
+    }
 
+    cards.forEach(card => {
+        card.addEventListener("click", function () {
+            const mainImage = this.querySelector(".main-image").src;
+            const title = this.querySelector("h3").innerText;
+            const price = this.querySelector(".price-button").outerHTML;
+            const purchaseLimit = this.querySelector(".card-content p")?.innerText.trim() || "";
+            const smallImages = this.querySelectorAll(".small-images img");
+            const quantities = this.querySelectorAll(".small-images span");
 
+            let includedItems = "";
+            smallImages.forEach((img, index) => {
+                const imgSrc = img.src;
+                const itemName = quantities[index]?.innerText || "Item";
+                if (!itemName.includes("Pokécoin")) {
+                    includedItems += `
+                        <div class='item-box'>
+                            <img src='${imgSrc}' class='small-item-image'> 
+                            <span>${itemName}</span>
+                        </div>`;
+                }
+            });
 
+            // Inject modal content
+            modalContent.innerHTML = `
+                <button class="close-modal">✖</button>
+                <div class='modal-header'>
+                    <img src="${mainImage}" class='modal-main-image'>
+                    <h3>${title}</h3>
+                </div>
+                <div class='modal-body'>
+                    ${includedItems ? `<h4>Included:</h4> ${includedItems}` : ""}
+                    ${purchaseLimit ? `<p>${purchaseLimit}</p>` : ""}
+                </div>
+                <div class='modal-footer'>
+                    ${price}
+                </div>
+            `;
 
+            modal.style.display = "flex";
 
+            // Close button functionality
+            document.querySelector(".close-modal").addEventListener("click", function () {
+                modal.style.display = "none";
+            });
+        });
+    });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-    <footer class="bg-light text-dark py-4" id="footer">
+    // Close modal when clicking outside of it
+    window.addEventListener("click", function (event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+});
+    </script>     -->
+<!-- FOOTER -->
+<footer class="bg-light text-dark py-4" id="footer">
         <div class="container text-center">
           
           <h5>Contact Us</h5>  
