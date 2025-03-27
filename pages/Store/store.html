@@ -104,18 +104,72 @@
                 <li class="pref-item"><a href="#">Popular</a></li>
                 <li class="pref-item"><a href="#">Limited Time</a></li>
             </div>
-            <li class="pref-item has-dropdown">
-                <div class="price-range"><a href="#">Price Range <span><i class='bx bxs-down-arrow' style='color:#ffffff' ></i></span></a> </div>
+            <li class="pref-item has-dropdown price-range">
+                <a href="#">Price Range <span><i class='bx bxs-down-arrow' style='color:#ffffff' ></i></span></a>            
                 <ul class="dropdown-pref" id="price-dropdown">
-                    <li class="dropdown-option"><a href="#">₱50 - ₱90</a></li>
-                    <li class="dropdown-option"><a href="#">₱100 - ₱300</a></li>
-                    <li class="dropdown-option"><a href="#">₱400 and above</a></li>
+                    <li class="dropdown-option"><a href="#">₱20 - ₱90</a></li>
+                    <li class="dropdown-option"><a href="#">₱100 - ₱400</a></li>
+                    <li class="dropdown-option"><a href="#">₱500 and above</a></li>
                 </ul>
             </li>
         </ul>
         </nav>
-
-
+        <!-- SCRIPT FOR PRICE RANGE-->
+         <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const priceRange = document.querySelector(".price-range");
+            const dropdown = document.getElementById("price-dropdown");
+            const items = document.querySelectorAll(".card");
+            if (!priceRange || !dropdown) {
+                console.error("Elements not found!");
+                return;
+            }
+        
+            // Toggle dropdown visibility
+            priceRange.addEventListener("click", function (event) {
+                event.preventDefault();
+                dropdown.classList.toggle("show");
+            });
+        
+            // Close dropdown when clicking outside
+            document.addEventListener("click", function (event) {
+                if (!priceRange.contains(event.target) && !dropdown.contains(event.target)) {
+                    dropdown.classList.remove("show");
+                }
+            });
+        
+            // Filtering logic for price range
+            document.querySelectorAll(".dropdown-option").forEach(option => {
+                option.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    const selectedRange = event.target.textContent.trim();
+                    
+                    let minPrice = 0, maxPrice = Infinity;
+                    if (selectedRange === "₱20 - ₱90") {
+                        minPrice = 20;
+                        maxPrice = 90;
+                    } else if (selectedRange === "₱100 - ₱400") {
+                        minPrice = 100;
+                        maxPrice = 400;
+                    } else if (selectedRange === "₱500 and above") {
+                        minPrice = 500;
+                    }
+        
+                    items.forEach(item => {
+                        const price = parseInt(item.querySelector(".price-button span").textContent.replace(/₱|,/g, ""));
+                        if (price >= minPrice && price <= maxPrice) {
+                            item.style.display = "block";
+                        } else {
+                            item.style.display = "none";
+                        }
+                    });
+        
+                    dropdown.classList.remove("show"); // Close dropdown after selection
+                });
+            });
+        });        
+            </script>
+            
        <!-- ITEM BOXES -->
 
         <section class="item-boxes" id="item-boxes">
@@ -399,10 +453,6 @@
                     <button class="price-button">₱ <span>59</span></button>
                 </div>
             </div>
-
-
-
-
     </div>
 
 

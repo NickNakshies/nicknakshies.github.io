@@ -185,7 +185,7 @@ div.main-window {
     
 }
 .pref-item:hover {
-    background-color: #3730303e; /* Yellow background */
+    background-color: #ffe67d; /* Yellow background */
 
 }
 
@@ -238,6 +238,7 @@ div.main-window {
     z-index: 9999;
 }
 .dropdown-option {
+    font-size:16px;
     padding: 50px ;
     text-align: center;
     z-index: 1000 !important;
@@ -248,6 +249,11 @@ div.main-window {
     color: #000000;
     display: block;
     width: 100%;
+}
+.has-dropdown i {
+    font-size: 14px; /* Adjust size */
+    margin-left: 8px;
+    color: rgb(0, 0, 0);
 }
 .dropdown-option:hover {
     background: #f0f0f0;
@@ -261,11 +267,20 @@ div.main-window {
     background-color: #ffcc33; /* Slightly darker yellow */
 
 }
-
+.has-dropdown > a::after {
+    content: " ▼"; /* Unicode triangle */
+    font-size: 14px; /* Adjust size */
+    color: #ffffff; /* Triangle color */
+    margin-left: 8px; /* Space from text */
+}
 /* Dropdown Icon */
 .has-dropdown .price-range i {
     color: #fdffd6 !important; /* Change icon color */
 }
+.dropdown-pref.show {
+    display: block;
+}
+
 /*  --------------------------------------- ITEM STORE ----------------------------------------------  */
 
 .item-boxes {
