@@ -15,8 +15,8 @@
     <!--CSS natin-->
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="./store.css">
-    
 
+    
 
 </head>
 <body>
@@ -94,12 +94,12 @@
                     <img src="https://store.pokemongolive.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fplatform-webstore-rel-assets%2Fpgo%2Fsite_assets%2Fhero_dynamax_launch_event_key_art.jpg&w=3840&q=75" class="d-block w-100" alt="Slide 3" >
                   </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev" style="transform: scale(2.5);">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                  <i class="bi bi-caret-left-fill" style="font-size: 4.5rem;"></i>
                   <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next" style="transform: scale(2.5);">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                  <i class="bi bi-caret-right-fill" style="font-size: 4.5rem;"></i>
                   <span class="visually-hidden">Next</span>
                 </button>
               </div>
@@ -137,136 +137,138 @@
 </nav>
 <!-- SCRIPT FOR PRICE RANGE AND PREFERENCES -->
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-    const priceRangeToggle = document.getElementById("price-range-toggle");
-    const dropdown = document.getElementById("price-dropdown");
-    const items = document.querySelectorAll(".card");
-    const navItems = document.querySelectorAll(".pref-item");
-
-    if (!priceRangeToggle || !dropdown || items.length === 0 || navItems.length < 3) {
-        console.error("Elements not found or no items available!");
-        return;
-    }
-
-    const allNav = navItems[0];
-    const popularNav = navItems[1];
-    const limitedTimeNav = navItems[2];
-    let activeFilter = "all";  
-    let activePriceRange = null;  
-
-    function setActiveNav(selectedNav) {
-        navItems.forEach(nav => nav.classList.remove("active"));
-        selectedNav.classList.add("active");
-    }
-
-    function resetPriceRange() {
-        activePriceRange = null;
-        priceRangeToggle.childNodes[0].textContent = "Price Range ";
-    }
-
-    function filterItemsByCategory(category) {
-        activeFilter = category;
-        resetPriceRange(); 
-        applyFilters();
-    }
-
-    function filterItemsByPrice(range, displayText) {
-        activePriceRange = range;
-        if (activeFilter === "all" && range === "all") {
-            resetPriceRange();
-        } else {
-            priceRangeToggle.childNodes[0].textContent = displayText + " ";
+    document.addEventListener("DOMContentLoaded", function () {
+        const priceRangeToggle = document.getElementById("price-range-toggle");
+        const dropdown = document.getElementById("price-dropdown");
+        const items = document.querySelectorAll(".card");
+        const navItems = document.querySelectorAll(".pref-item");
+    
+        if (!priceRangeToggle || !dropdown || items.length === 0 || navItems.length < 3) {
+            console.error("Elements not found or no items available!");
+            return;
         }
-
-        applyFilters();
-    }
-
-    function applyFilters() {
-        let minPrice = 0, maxPrice = Infinity;
-
-        if (activePriceRange === "20-90") {
-            minPrice = 20;
-            maxPrice = 90;
-        } else if (activePriceRange === "100-400") {
-            minPrice = 100;
-            maxPrice = 400;
-        } else if (activePriceRange === "500-above") {
-            minPrice = 500;
+    
+        const allNav = navItems[0];
+        const popularNav = navItems[1];
+        const limitedTimeNav = navItems[2];
+        let activeFilter = "all";  
+        let activePriceRange = null;  
+    
+        function setActiveNav(selectedNav) {
+            navItems.forEach(nav => nav.classList.remove("active"));
+            selectedNav.classList.add("active");
         }
-
-        items.forEach(item => {
-            const name = item.querySelector(".card-content h3")?.textContent.trim().toLowerCase();
-            const priceElement = item.querySelector(".price-button span");
-            if (!name || !priceElement) return;
-
-            const price = parseInt(priceElement.textContent.replace(/₱|,/g, ""), 10);
-            let matchesCategory = false;
-            let matchesPrice = activePriceRange ? (!isNaN(price) && price >= minPrice && price <= maxPrice) : true;
-
-            if (activeFilter === "popular") {
-                matchesCategory = name.includes("super incubator") || name.includes("egg incubator");
-            } else if (activeFilter === "limited-time") {
-                matchesCategory = (
-                    name.includes("bug out ultra ticket box") ||
-                    name.includes("go rocket box") ||
-                    name.includes("ultra raid box") ||
-                    name.includes("might and mastery box")
-                );
+    
+        function resetPriceRange() {
+            activePriceRange = null;
+            priceRangeToggle.childNodes[0].textContent = "Price Range ";
+        }
+    
+        function filterItemsByCategory(category) {
+            activeFilter = category;
+            resetPriceRange(); 
+            applyFilters();
+        }
+    
+        function filterItemsByPrice(range, displayText) {
+            activePriceRange = range;
+            if (activeFilter === "all" && range === "all") {
+                resetPriceRange();
             } else {
-                matchesCategory = true; 
+                priceRangeToggle.childNodes[0].textContent = displayText + " ";
             }
-
-            item.style.display = (matchesCategory && matchesPrice) ? "block" : "none";
-        });
-    }
-
-    priceRangeToggle.addEventListener("click", function (event) {
-        event.preventDefault();
-        dropdown.classList.toggle("show");
-    });
-
-    document.addEventListener("click", function (event) {
-        if (!priceRangeToggle.contains(event.target) && !dropdown.contains(event.target)) {
-            dropdown.classList.remove("show");
+    
+            applyFilters();
         }
-    });
-
-    document.querySelectorAll(".dropdown-option").forEach(option => {
-        option.addEventListener("click", function (event) {
+    
+        function applyFilters() {
+            let minPrice = 0, maxPrice = Infinity;
+    
+            if (activePriceRange === "20-90") {
+                minPrice = 20;
+                maxPrice = 90;
+            } else if (activePriceRange === "100-400") {
+                minPrice = 100;
+                maxPrice = 400;
+            } else if (activePriceRange === "500-above") {
+                minPrice = 500;
+            }
+    
+            items.forEach(item => {
+                const name = item.querySelector(".card-content h3")?.textContent.trim().toLowerCase();
+                const priceElement = item.querySelector(".price-button span");
+                if (!name || !priceElement) return;
+    
+                const price = parseInt(priceElement.textContent.replace(/₱|,/g, ""), 10);
+                let matchesCategory = false;
+                let matchesPrice = activePriceRange ? (!isNaN(price) && price >= minPrice && price <= maxPrice) : true;
+    
+                if (activeFilter === "popular") {
+                    matchesCategory = name.includes("super incubator") || name.includes("egg incubator");
+                } else if (activeFilter === "limited-time") {
+                    matchesCategory = (
+                        name.includes("bug out ultra ticket box") ||
+                        name.includes("go rocket box") ||
+                        name.includes("ultra raid box") ||
+                        name.includes("might and mastery box")
+                    );
+                } else {
+                    matchesCategory = true; 
+                }
+    
+                item.style.display = (matchesCategory && matchesPrice) ? "block" : "none";
+            });
+        }
+    
+        priceRangeToggle.addEventListener("click", function (event) {
             event.preventDefault();
-            const range = option.getAttribute("data-range");
-            const displayText = option.textContent.trim();
-            dropdown.classList.remove("show");
-            filterItemsByPrice(range, displayText);
+            dropdown.classList.toggle("show");
+        });
+    
+        document.addEventListener("click", function (event) {
+            if (!priceRangeToggle.contains(event.target) && !dropdown.contains(event.target)) {
+                dropdown.classList.remove("show");
+            }
+        });
+    
+        document.querySelectorAll(".dropdown-option").forEach(option => {
+            option.addEventListener("click", function (event) {
+                event.preventDefault();
+                const range = option.getAttribute("data-range");
+                const displayText = option.textContent.trim();
+                dropdown.classList.remove("show");
+                filterItemsByPrice(range, displayText);
+            });
+        });
+    
+        allNav.addEventListener("click", function (event) {
+            event.preventDefault();
+            setActiveNav(allNav);
+            filterItemsByCategory("all");
+        });
+    
+        popularNav.addEventListener("click", function (event) {
+            event.preventDefault();
+            setActiveNav(popularNav);
+            filterItemsByCategory("popular");
+        });
+    
+        limitedTimeNav.addEventListener("click", function (event) {
+            event.preventDefault();
+            setActiveNav(limitedTimeNav);
+            filterItemsByCategory("limited-time");
+        });
+    
+        navItems.forEach(item => {
+            item.addEventListener("click", function () {
+                navItems.forEach(nav => nav.classList.remove("hovered"));
+                this.classList.add("hovered");
+            });
         });
     });
-
-    allNav.addEventListener("click", function (event) {
-        event.preventDefault();
-        setActiveNav(allNav);
-        filterItemsByCategory("all");
-    });
-
-    popularNav.addEventListener("click", function (event) {
-        event.preventDefault();
-        setActiveNav(popularNav);
-        filterItemsByCategory("popular");
-    });
-
-    limitedTimeNav.addEventListener("click", function (event) {
-        event.preventDefault();
-        setActiveNav(limitedTimeNav);
-        filterItemsByCategory("limited-time");
-    });
-
-    navItems.forEach(item => {
-        item.addEventListener("click", function () {
-            navItems.forEach(nav => nav.classList.remove("hovered"));
-            this.classList.add("hovered");
-        });
-    });
-});
-</script>
+    </script>
+    <!-- END SCRIPT FOR PRICE RANGE AND PREFERENCES -->
+     
         <!-- SEPERATE TS -->
         <div class="label-name-1" >
             <h1>Item Boxes</h1>
@@ -448,45 +450,6 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
 
         </section>
-   
-<!-- MODAL -->
-<div id="item-modal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <img id="modal-img" src="" alt="Item Image" class="modal-image">
-        <h3 id="modal-title"></h3>
-        <p id="modal-price"></p>
-        <p>Included:</p>
-        <ul>
-            <li id="modal-item1"></li>
-            <li id="modal-item2"></li>
-        </ul>
-        <button class="buy-now">Buy Now</button>
-    </div>
-</div>
-
-<!-- JAVASCRIPT -->
-<script>
-    function openModal(imgSrc, title, price, item1, item2) {
-        document.getElementById("modal-img").src = imgSrc;
-        document.getElementById("modal-title").innerText = title;
-        document.getElementById("modal-price").innerText = price;
-        document.getElementById("modal-item1").innerText = item1;
-        document.getElementById("modal-item2").innerText = item2;
-        document.getElementById("item-modal").style.display = "block";
-    }
-
-    function closeModal() {
-        document.getElementById("item-modal").style.display = "none";
-    }
-
-    window.onclick = function(event) {
-        if (event.target.classList.contains('modal')) {
-            closeModal();
-        }
-    }
-</script>
-
         <!-- SEPRATE TS -->
          
         <div class="label-name" id="Poke-coins">
@@ -606,8 +569,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
             </div>
     </div>
-
-
     <footer class="bg-light text-dark py-4" id="footer">
         <div class="container text-center">
           
@@ -637,9 +598,5 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
       </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    
-
-
-
 </body>
 </html>
