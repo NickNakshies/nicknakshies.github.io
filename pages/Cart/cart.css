@@ -295,6 +295,7 @@ input[type="text"] {
     align-items: center;
     gap: 10px; /* Adds spacing between elements */
     margin-right: 60px;
+
 }
 
 .product-quantity button {
@@ -320,13 +321,18 @@ input[type="text"] {
 
 
 .product-price{
+
     color: #000000;
     font-size: 20px;
     font-weight: 500;
     margin-right: 100px;
+
+
+
 }
 
 .product-total{
+
     color: #000000;
     font-size: 20px;
     font-weight: 500;
