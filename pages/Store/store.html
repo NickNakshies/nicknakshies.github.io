@@ -34,7 +34,6 @@
 
             <!-- Navbar content -->
             <div class="collapse navbar-collapse" id="navbarContent">
-
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-0 mt-2">
                     <li class="nav-item fs-3 me-5 ms-4">
                         <a class="nav-link fw-bold" href="../../Boilerplate/index.html">Featured</a>
@@ -45,9 +44,9 @@
                             Store
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="storeDropdown">
-                            <li><a class="dropdown-item" href="#">Item Boxes</a></li>
-                            <li><a class="dropdown-item" href="#">Poke Coins</a></li>
-                            <li><a class="dropdown-item" href="#">Daily Bundles</a></li>
+                            <li><a class="dropdown-item" href="#item-boxes">Item Boxes</a></li>
+                            <li><a class="dropdown-item" href="#Poke-coins">Poke Coins</a></li>
+                            <li><a class="dropdown-item" href="#Daily-bundles">Daily Bundles</a></li>
                         </ul>
                     </li>
 
@@ -80,21 +79,37 @@
         </nav>
 
 
-
         <!-- ITEM STORE -->
-
-        <section id="sec1" class="cover">
-            <div class="cover-overlay">
-                <h1>Pokemon GO!</h1>
-                <span class="slogan">EMENG FeaTURE MUNA</span>
-            </div>
+       <!-- CAROUSEL  -->
+        <section id="sec1" class="container">
+            <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                <div class="carousel-inner"  style="border-radius: 20px;">
+                  <div class="carousel-item active" data-bs-interval="6000">
+                    <img src="https://store.pokemongolive.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fplatform-webstore-rel-assets%2Fpgo%2Fsite_assets%2FPGO-MCS_BugOut_2025_1024x512_v4_nologo.jpg&w=3840&q=75" class="d-block w-100" alt="Slide 1">
+                  </div>
+                  <div class="carousel-item" data-bs-interval="6000">
+                    <img src="https://store.pokemongolive.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fplatform-webstore-rel-assets%2Fpgo%2Fsite_assets%2FPGO2025_Global_withoutlogo_withoutlegallines_W1334%2520x%2520H600px.png&w=3840&q=75" class="d-block w-100" alt="Slide 2">
+                  </div>
+                  <div class="carousel-item" data-bs-interval="6000">
+                    <img src="https://store.pokemongolive.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fplatform-webstore-rel-assets%2Fpgo%2Fsite_assets%2Fhero_dynamax_launch_event_key_art.jpg&w=3840&q=75" class="d-block w-100" alt="Slide 3" >
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev" style="transform: scale(2.5);">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next" style="transform: scale(2.5);">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
         </section>
 
 
         <!-- ITEM STORE  NAVIGATION BAR-->
         <div class="itemNav">
             <ul class="NAVIGATION">
-                <li><a href="#">Featured</a></li>
+                <li><a href="#navbarContent">Featured</a></li>
                 <li><a href="#item-boxes">Item Box</a></li>
                 <li><a href="#Poke-coins">PokeCoins</a></li>
                 <li><a href="#Daily-bundles">Daily Bundles</a></li>
@@ -546,79 +561,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
             </div>
     </div>
-<!------------------------------------------- POPUP CARD --------------------------------------------------->
-<!-- <div id="item-modal" class="modal" style="display: none;">
-    <div class="modal-content">
-    </div>
-</div>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const cards = document.querySelectorAll(".card");
-    const modal = document.getElementById("item-modal");
-    const modalContent = modal.querySelector(".modal-content");
 
-    if (!modal) {
-        console.error("Modal element not found!");
-        return;
-    }
 
-    cards.forEach(card => {
-        card.addEventListener("click", function () {
-            const mainImage = this.querySelector(".main-image").src;
-            const title = this.querySelector("h3").innerText;
-            const price = this.querySelector(".price-button").outerHTML;
-            const purchaseLimit = this.querySelector(".card-content p")?.innerText.trim() || "";
-            const smallImages = this.querySelectorAll(".small-images img");
-            const quantities = this.querySelectorAll(".small-images span");
-
-            let includedItems = "";
-            smallImages.forEach((img, index) => {
-                const imgSrc = img.src;
-                const itemName = quantities[index]?.innerText || "Item";
-                if (!itemName.includes("Pokécoin")) {
-                    includedItems += `
-                        <div class='item-box'>
-                            <img src='${imgSrc}' class='small-item-image'> 
-                            <span>${itemName}</span>
-                        </div>`;
-                }
-            });
-
-            // Inject modal content
-            modalContent.innerHTML = `
-                <button class="close-modal">✖</button>
-                <div class='modal-header'>
-                    <img src="${mainImage}" class='modal-main-image'>
-                    <h3>${title}</h3>
-                </div>
-                <div class='modal-body'>
-                    ${includedItems ? `<h4>Included:</h4> ${includedItems}` : ""}
-                    ${purchaseLimit ? `<p>${purchaseLimit}</p>` : ""}
-                </div>
-                <div class='modal-footer'>
-                    ${price}
-                </div>
-            `;
-
-            modal.style.display = "flex";
-
-            // Close button functionality
-            document.querySelector(".close-modal").addEventListener("click", function () {
-                modal.style.display = "none";
-            });
-        });
-    });
-
-    // Close modal when clicking outside of it
-    window.addEventListener("click", function (event) {
-        if (event.target === modal) {
-            modal.style.display = "none";
-        }
-    });
-});
-    </script>     -->
-<!-- FOOTER -->
-<footer class="bg-light text-dark py-4" id="footer">
+    <footer class="bg-light text-dark py-4" id="footer">
         <div class="container text-center">
           
           <h5>Contact Us</h5>  
