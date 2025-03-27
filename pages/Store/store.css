@@ -215,6 +215,8 @@ html, body {
     border-radius: 50px;
     font-size: 25px;
     transition: background-color 0.3s ease, border-color 0.3s ease;
+    position: relative; /* Ensures dropdown positions correctly */
+    z-index: 1000;
 }
 
 .pref-item a {
@@ -222,41 +224,37 @@ html, body {
     color: #fdffd6;
     font-weight: 500;
     text-shadow: 2px 2px 6px #0000008a;
-
-
 }
+
 .pref-item:hover {
     color: #b5b5b5;
 }
 
-/* Price Range Text Color */
-.has-dropdown .price-range a {
-    color: #fdffd6 !important;
-    font-weight: 500;
-
-}
-.has-dropdown {
-    position: relative;
-    z-index: 1000;
-}
-
+/* Fix dropdown display issue */
 .dropdown-pref {
-    display: none;
+    display: none; /* Hidden by default */
     position: absolute;
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
     background: #fff;
     border-radius: 10px;
-    padding: 20px 0;
+    padding: 10px 0; /* Reduced padding */
     list-style: none;
     width: 200px;
     z-index: 9999;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
 }
+
+/* Ensure dropdown shows correctly */
+.dropdown-pref.show {
+    display: block;
+}
+
 .dropdown-option {
-    padding: 50px ;
+    padding: 10px; /* Reduced padding */
     text-align: center;
-    z-index: 1000 !important;
+    cursor: pointer; /* Ensure it's clickable */
 }
 
 .dropdown-option a {
@@ -267,33 +265,18 @@ html, body {
     width: 100%;
     text-shadow: none;
 }
-.has-dropdown i {
-    font-size: 14px; /* Adjust size */
-    margin-left: 8px;
-    color: rgb(0, 0, 0);
-}
+
 .dropdown-option:hover {
     background: #f0f0f0;
 }
-/* Hover Effect for Price Range */
-.has-dropdown:hover {
-    background-color: #ffcc33; /* Slightly darker yellow */
 
-}
+/* Price Range Arrow */
 .has-dropdown > a::after {
-    content: " ▼"; /* Unicode triangle */
-    font-size: 14px; /* Adjust size */
-    color: #ffffff; /* Triangle color */
-    margin-left: 8px; /* Space from text */
+    content: " ▼";
+    font-size: 14px;
+    color: #ffffff;
+    margin-left: 8px;
 }
-/* Dropdown Icon */
-.has-dropdown .price-range i {
-    color: #fdffd6 !important; /* Change icon color */
-}
-
-
-
-
 /*  */
 
 /*  */
