@@ -290,6 +290,45 @@ html, body {
 .has-dropdown .price-range i {
     color: #fdffd6 !important; /* Change icon color */
 }
+
+
+
+
+/*  */
+
+/*  */
+
+
+.label-name{
+    width: 100%;
+    padding: 0px 95px;
+    padding-top: 10rem;
+}
+.label-name-1{
+    width: 100%;
+    padding: 0px 95px;
+    padding-top: 5rem;
+}
+
+.label-name-1 h1{
+    font-size: 40px;
+    font-weight: 800;
+    color: #fdffd6;
+    text-align: left;
+    margin-bottom: 1rem;
+    font-weight: 800;
+    text-shadow: 2px 2px 6px #0000008a;
+}
+.label-name h1{
+    font-size: 40px;
+    font-weight: 800;
+    color: #fdffd6;
+    text-align: left;
+    margin-bottom: 1rem;
+    font-weight: 800;
+    text-shadow: 2px 2px 6px #0000008a;
+}
+
 /*  --------------------------------------- ITEM STORE ----------------------------------------------  */
 
 .item-boxes {
