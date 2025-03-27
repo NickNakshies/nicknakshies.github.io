@@ -442,8 +442,13 @@ html, body {
     margin: 10px 0;
     font-size: 15px;
 }
+
+
+
+/* modal */
+
 /*  --------------------------------------- POPUP CARD ----------------------------------------------  */
-/* .modal {
+ .modal {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -484,4 +489,5 @@ html, body {
 .close-modal:hover {
     background: darkred;
 } */
+
 
