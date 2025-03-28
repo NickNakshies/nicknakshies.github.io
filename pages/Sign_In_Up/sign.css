@@ -60,19 +60,34 @@ form label {
 
 .btn {
     width: 50%;
-    border-radius: 20px;
+    border-radius: 30px;
     font-weight: bold;
     color: #fdffd0;
 }
 
+.btn-primary {
+    font-size: 24px;
+    width: 250px;
+}
+
+.forgot-pass {
+    font-size: 20px;
+    color: #e23a3a; /* Change text color */
+    font-weight: bold; /* Make it bold */
+    cursor: pointer; /* Make it look clickable */
+    text-decoration: underline; /* Add underline */
+}
+
 .create-account-text {
     font-weight: 600;
-    font-size: 18px;
+    font-size: 20px;
     color: #222;
 }
 
 .create-account-text a {
-    color: blue;
+    color: #f5ff3e;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
     font-weight: bold;
     text-decoration: none;
+    text-decoration: underline;
 }

@@ -70,3 +70,23 @@ body {
 .scroll-offset{
     scroll-margin-top: 250px;
 }
+
+.featured-image {
+    margin-top: -50px; /* Adjust as needed */
+    text-align: center; /* Ensures centering */
+}
+
+.item-box {
+    margin: -25px; /* Increase spacing */
+    margin-left: -60%;
+}
+
+.poke-coins {
+    margin: -25px; /* Increase spacing */
+    margin-left: -10%;
+}
+
+.daily-bundles{
+    margin: -35px; /* Increase spacing */
+    margin-left: 40%;
+}
