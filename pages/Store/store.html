@@ -597,31 +597,42 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   
 
-      <script>
+    <script>
+        let scrollY = 0; // Store scroll position globally
+    
         document.addEventListener("DOMContentLoaded", function () {
             const cards = document.querySelectorAll(".card");
-        
+    
             cards.forEach(card => {
                 card.addEventListener("click", function (event) {
-                    event.preventDefault(); // Prevent default action (important for <a> links)
-                    event.stopPropagation(); // Prevent bubbling to parent elements
-        
-                    const imageSrc = this.querySelector(".main-image")?.src;
-                    const itemName = this.querySelector("h3")?.textContent;
-                    const itemDescription = this.querySelector("p")?.textContent;
-                    const itemPrice = this.querySelector(".price-button span")?.textContent;
-        
-                    // Get current scroll position to freeze the viewport
-                    const scrollY = window.scrollY || window.pageYOffset;
-                    document.body.style.position = "fixed";
-                    document.body.style.top = `-${scrollY}px`;
-                    document.body.style.width = "100%";
-                    document.body.style.overflow = "hidden"; // Disable scrolling
-        
-                    // Collect small images and their corresponding quantities
+                    event.preventDefault();
+                    event.stopPropagation();
+    
+                    // Get item details
+                    const imageSrc = this.querySelector(".main-image")?.src || "";
+                    const itemName = this.querySelector("h3")?.textContent || "Unnamed Item";
+                    const itemDescription = this.querySelector("p")?.textContent || "No description available.";
+                    const itemPrice = this.querySelector(".price-button span")?.textContent || "0.00";
+    
+                    // Debug: Ensure values are correct
+                    console.log("Item Clicked:", { imageSrc, itemName, itemDescription, itemPrice });
+    
+                    if (!imageSrc || !itemName) {
+                        console.error("Missing item details! Check your HTML structure.");
+                        return; // Exit function if details are missing
+                    }
+    
+                    // Store and disable scrolling
+                    scrollY = window.scrollY || window.pageYOffset;
+                    console.log("Stored Scroll Position:", scrollY);
+    
+                    document.documentElement.style.overflow = "hidden";
+                    document.body.style.overflow = "hidden";
+    
+                    // Collect small images and their quantities
                     const smallImages = this.querySelectorAll(".small-images img");
                     const quantities = this.querySelectorAll(".small-images span");
-        
+    
                     let smallImagesHTML = "";
                     smallImages.forEach((img, index) => {
                         const quantity = quantities[index] ? quantities[index].textContent : "1";
@@ -632,7 +643,8 @@
                             </div>
                         `;
                     });
-        
+    
+                    // Show Swal popup
                     Swal.fire({
                         title: itemName,
                         html: `
@@ -640,50 +652,66 @@
                             <p>${itemDescription}</p>
                             <h3 style="color: #fdffd6;">₱ ${itemPrice}</h3>
                             <div style="display: flex; justify-content: center; flex-wrap: wrap;">${smallImagesHTML}</div>
-                            <button id="add-to-cart-btn" class="swal2-confirm swal2-styled" style="background: #d30e0e; border-radius: 30px; padding: 10px 20px; font-size: 16px; border-radius: 5px; margin-top: 15px;">Add to Cart</button>
+                            <button id="add-to-cart-btn" class="swal2-confirm swal2-styled" 
+                                style="background: #d30e0e; border-radius: 30px; padding: 10px 20px; font-size: 16px; margin-top: 15px;">
+                                Add to Cart
+                            </button>
                         `,
                         showConfirmButton: false,
                         showCloseButton: true,
                         position: "center",
                         backdrop: true,
-                        customClass: {
-                            popup: "custom-swal-popup", // Add a custom class
-                        },
+                        customClass: { popup: "custom-swal-popup" },
                         didOpen: () => {
                             document.querySelector("#add-to-cart-btn").addEventListener("click", function () {
-                                addToCart(itemName, imageSrc, itemPrice); // Now it correctly adds to localStorage
+                                addToCart(itemName, imageSrc, itemPrice);
                         
-                                Swal.fire({
-                                    title: "Item Added to Cart!",
-                                    text: `${itemName} has been added to your cart.`,
-                                    icon: "success",
-                                    confirmButtonText: "OK",
-                                    confirmButtonColor: "#d30e0e"
-                                });
+                                // Close the current modal before showing the success message
+                                Swal.close();
+                        
+                                setTimeout(() => {
+                                    Swal.fire({
+                                        title: "Item Added to Cart!",
+                                        text: `${itemName} has been added to your cart.`,
+                                        icon: "success",
+                                        confirmButtonText: "OK",
+                                        confirmButtonColor: "#d30e0e"
+                                    }).then(() => {
+                                        // Restore scrolling only after the confirmation modal is closed
+                                        document.documentElement.style.overflow = "";
+                                        document.body.style.overflow = "";
+                                        window.scrollTo(0, scrollY);
+                                        console.log("Scroll Restored After Add to Cart Confirmation!");
+                                    });
+                                }, 200); // Small delay to ensure the first modal is fully closed
                             });
                         },
-                
                         willClose: () => {
-                            document.body.style.position = ""; // Restore position
-                            document.body.style.top = "";
-                            document.body.style.width = "";
-                            document.body.style.overflow = ""; // Re-enable scrolling
-                            window.scrollTo(0, scrollY); // Restore scroll position
+                            console.log("Restoring Scroll Position:", scrollY);
+    
+                            // Restore scrolling
+                            document.documentElement.style.overflow = "";
+                            document.body.style.overflow = "";
+    
+                            setTimeout(() => {
+                                window.scrollTo(0, scrollY);
+                                console.log("Scroll Restored!");
+                            }, 50); // Slight delay to ensure restoration works
                         }
                     });
                 });
             });
         });
-
+    
         // Function to Add Item to Cart (Save in localStorage)
         function addToCart(name, image, price) {
-            let cart = JSON.parse(localStorage.getItem("cart")) || []; // Get existing cart or create empty array
-            cart.push({ name, image, price }); // Add new item
-            localStorage.setItem("cart", JSON.stringify(cart)); // Save updated cart
-}       
-
-
-      </script>
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            cart.push({ name, image, price });
+            localStorage.setItem("cart", JSON.stringify(cart));
+            console.log("Cart Updated:", cart);
+        }
+    </script>
+    
 
 
 
