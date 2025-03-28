@@ -21,7 +21,7 @@
     <div class="main-window">
         <!-- NAVBAR START -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light px-4 mt-0 ms-3">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/Boilerplate/index.html">
                 <img src="../../assets/Logo.png" alt="Logo" >
             </a>
 
@@ -67,7 +67,7 @@
                         </a>
                     </li>
                     <li class="nav-item me-1">
-                        <a class="nav-link" href="../pages/Profile/profile.html">
+                        <a class="nav-link" href="#">
                             <div class="d-flex align-items-center rounded-pill mt-1 px-4 py-1 fw-bold text-light" style="gap: 10px; background-color: #cbdf72;">Sign In
                                 <i class="bi bi-person-circle fs-1 text-light"></i>
                             </div>
@@ -89,7 +89,7 @@
                 <div class="login-title align-items-center">
                     <h2 style="margin-left: 40%; margin-bottom: 3%;">Log in</h2>
                 <div class="right-panel p-4">
-                    <form style = "margin-left: 10%; margin-top: 3%;">
+                    <form id="loginForm" style = "margin-left: 10%; margin-top: 3%;">
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control" id="email" placeholder="Enter your email">
@@ -140,6 +140,25 @@
     <script>
         window.addEventListener("resize", () => {
             console.log("Window width:", window.innerWidth);
+        });
+
+        document.getElementById("loginForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            // Assuming your login validation goes here
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            // Simple check for demonstration purposes
+            if (email === "irishfermin910@gmail.com" && password === "pass") {
+                localStorage.setItem("isLoggedIn", "true"); // Set the flag
+                localStorage.setItem("email", email); // Save email
+                localStorage.setItem("password", password); // Save password
+                alert("Login successful!");
+                window.location.href = "/Boilerplate/index.html";
+            } else {
+                alert("Invalid username or password!");
+            }
         });
 
     // Load profile image on home page

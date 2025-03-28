@@ -42,7 +42,7 @@
 
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-0 mt-2">
                     <li class="nav-item fs-3 me-5 ms-4">
-                        <a class="nav-link fw-bold" href="../../Boilerplate/index.html">Featured</a>
+                        <a class="nav-link fw-bold" href="/pages/Store/store.html#navbarContent">Featured</a>
                     </li>
 
                     <li class="nav-item dropdown fs-3 me-4">
@@ -74,7 +74,7 @@
                         </a>
                     </li>
                     <li class="nav-item me-1">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="/pages/Profile/profile.html">
                             <div class="d-flex align-items-center rounded-pill mt-1 px-4 py-1 text-light fw-bold fs-5" style="gap: 10px; background-color: #cbdf72;">Sign In
                                 <i class="bi bi-person-circle fs-1 text-light"></i>
                             </div>
@@ -266,6 +266,13 @@
 
     
     <script>
+        
+        document.addEventListener("DOMContentLoaded", function() {
+            if (localStorage.getItem("isLoggedIn") !== "true") {
+                window.location.href = "/pages/Sign_In_Up/signin.html";  // Redirect to login page
+            }
+        });
+
         document.addEventListener("DOMContentLoaded", function () {
             let cart = JSON.parse(localStorage.getItem("cart")) || [];
         

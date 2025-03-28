@@ -140,7 +140,7 @@
                 <!--Log out and Save button-->
                 <div class="row" style="margin-top: 5%;">         
                     <div class="col mt-3">
-                        <a href="#" class="text-danger profile-link" ><i class="bi bi-power me-3"></i>Log Out</a>
+                        <a href="/pages/Sign_In_Up/signin.html" id="logout-btn" class="text-danger profile-link" ><i class="bi bi-power me-3"></i>Log Out</a>
                     </div>    
                     <div class="col offset-lg-6">
                         <button type="submit" class="btn ms-3 rounded-pill bg-primary text-light fs-5 px-4 py-3 fw-bold shadow viewOrder" onclick="saveUserData()"><i class="bi bi-floppy me-2"></i> Save Settings</button>
@@ -187,6 +187,12 @@
             loadSavedData();
         });
 
+        document.addEventListener("DOMContentLoaded", function() {
+            if (localStorage.getItem("isLoggedIn") !== "true") {
+                window.location.href = "/pages/Sign_In_Up/signin.html";  // Redirect to login page
+            }
+        });
+
         function loadSavedData() {
             let savedImage = localStorage.getItem("profileImage");
             let savedName = localStorage.getItem("name");
@@ -198,6 +204,15 @@
             if (savedEmail) document.getElementById("email").value = savedEmail.trim();
             if (savedPassword) document.getElementById("password").value = savedPassword;
         }
+
+        document.getElementById("logout-btn").addEventListener("click", function() {
+            localStorage.clear();
+            localStorage.removeItem("isLoggedIn");
+            alert("Logged out successfully!");
+        });
+
+
+
 
         function loadFile(event) {
             event.preventDefault();

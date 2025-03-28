@@ -137,6 +137,12 @@
 </nav>
 <!-- SCRIPT FOR PRICE RANGE AND PREFERENCES -->
 <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        if (localStorage.getItem("isLoggedIn") !== "true") {
+            window.location.href = "/pages/Sign_In_Up/signin.html";  // Redirect to login page
+        }
+    });
+
     document.addEventListener("DOMContentLoaded", function () {
         const priceRangeToggle = document.getElementById("price-range-toggle");
         const dropdown = document.getElementById("price-dropdown");
