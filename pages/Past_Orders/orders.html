@@ -14,13 +14,16 @@
     
     <!--CSS natin-->
     <link rel="stylesheet" href="/pages/style.css">
+    <link rel="stylesheet" href="./orders.css">
+    <link rel="stylesheet" href="../Store/store.css">
+    <link rel="stylesheet" href="../Profile/profile.css">
 
 </head>
 <body>
     <div class="main-window">
         <!-- NAVBAR START -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light px-4 mt-0 ms-3">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="../../Boilerplate/index.html">
                 <img src="../../assets/Logo.png" alt="Logo" >
             </a>
 
@@ -43,8 +46,8 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="storeDropdown">
                             <li><a class="dropdown-item" href="/pages/Store/store.html#item-boxes">Item Boxes</a></li>
-                            <li><a class="dropdown-item" href="#">Poke Coins</a></li>
-                            <li><a class="dropdown-item" href="#">Daily Bundles</a></li>
+                            <li><a class="dropdown-item" href="/pages/Store/store.html#Poke-coins">Poke Coins</a></li>
+                            <li><a class="dropdown-item" href="/pages/Store/store.html#Daily-bundles">Daily Bundles</a></li>
                         </ul>
                     </li>
 
@@ -56,7 +59,7 @@
 
                 <ul class="navbar-nav mb-2 mb-lg-0 me-5">
                     <li class="nav-item me-4 mt-1">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="/pages/Cart/cart.html">
                             <i class="bi bi-cart-fill override-icon rounded-pill bg-primary px-5 py-1" style="font-size: 2.8rem;"></i>
                         </a>
                     </li>
@@ -67,14 +70,101 @@
                     </li>
                     <li class="nav-item me-1">
                         <a class="nav-link" href="../Profile/profile.html">
-                            <div id="home-profile-icon" class="d-flex align-items-center rounded-pill mt-1 px-4 py-1 fw-bold text-light" style="gap: 10px; background-color: #cbdf72;">Sign In
+                            <div class="d-flex align-items-center rounded-pill mt-1 px-4 py-1 fw-bold text-light" style="gap: 10px; background-color: #cbdf72;">Sign In
                                 <i class="bi bi-person-circle fs-1 text-light"></i>
                             </div>
                         </a>   
                     </li>
                 </ul>
             </div>
-        </nav>  
+        </nav>
+        
+        <div class="container title-window d-flex align-items-center mb-4">
+            <h1 class="text-shadow fs-1 mt-1 ms-4 fw-bold">Order History</h1>
+        </div>
+        <div class="container content-window text-shadow">
+            <div class="row mt-5">
+                <div class="col item-image d-flex justify-content-center ms-3" style="margin-top: -2vh;">
+                    <img src="/assets/110 PokéCoins.webp" alt="">
+                </div>
+                <div class="col ms-5 ps-5">
+                    <div class="row fs-3 fw-bold ">110 PokéCoins</div>
+                    <div class="row fs-5 mt-2">Order Placed: 20-03-2024</div>
+                    <div class="row fs-5">Qty: 1</div>
+                </div>
+                <div class="col d-flex justify-content-center fs-3 fw-bold">₱29</div>
+                <div class="col">
+                    <div class="row fs-4"><a href="javascript:void(0);" 
+                        class="order-details fw-bold link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" 
+                        style="color: #ecee8e;"
+                        data-name="110 PokéCoins"
+                        data-date="20-03-2024"
+                        data-time="23:10"
+                        data-qty="1"
+                        data-price="₱88"
+                        data-payment="PayPal"
+                        data-image="/assets/110 PokéCoins.webp">
+                        Order Details <i class="bi bi-arrow-right"></i>
+                     </a></div>
+                    <div class="row mt-5"><a href="/pages/Store/store.html#coin-1" class="btn rounded-pill bg-primary text-light py-2 fs-4 fw-bold viewOrder" style="width: 75%;">Buy Again</a></div>
+                </div>
+            </div>
+            <hr>
+            <div class="row mt-5 mb-5 pb-3">
+                <div class="col item-image d-flex justify-content-center ms-4" style="margin-top: -2vh;">
+                    <img src="/assets/GO Rocket Box.png" alt="" style="height: 125%; width: auto;">
+                </div>
+                <div class="col ms-5 ps-5">
+                    <div class="row fs-3 fw-bold ">GO Rocket Box</div>
+                    <div class="row fs-5 mt-2">Order Placed: 5-12-2023</div>
+                    <div class="row fs-5">Qty: 1</div>
+                </div>
+                <div class="col d-flex justify-content-center fs-3 fw-bold">₱289</div>
+                <div class="col">
+                    <div class="row fs-4"><a href="javascript:void(0);" 
+                        class="order-details fw-bold link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" 
+                        style="color: #ecee8e;"
+                        data-name="Premium Battle Pass"
+                        data-date="5-12-2023"
+                        data-time="17:35"
+                        data-qty="1"
+                        data-price="₱289"
+                        data-payment="BDO"
+                        data-image="/assets/GO Rocket Box.png">
+                        Order Details <i class="bi bi-arrow-right"></i>
+                     </a></div>
+                    <div class="row mt-5"><a href="/pages/Store/store.html#item-2" class="btn rounded-pill bg-primary text-light py-2 fs-4 fw-bold viewOrder" style="width: 75%;">Buy Again</a></div>
+                </div>
+            </div>
+            <hr>
+            <div class="row mt-5">
+                <div class="col item-image d-flex justify-content-center ms-5 mt-4">
+                    <img src="/assets/Premium Battle Pass.png" alt="" style="width: auto; height: 140%;">
+                </div>
+                <div class="col ms-5 ps-5">
+                    <div class="row fs-3 fw-bold ">Premium Battle Pass</div>
+                    <div class="row fs-5 mt-2">Order Placed: 12-11-2023</div>
+                    <div class="row fs-5">Qty: 3</div>
+                </div>
+                <div class="col d-flex justify-content-center fs-3 fw-bold">₱264</div>
+                <div class="col">
+                    <div class="row fs-4"><a href="javascript:void(0);" 
+                        class="order-details fw-bold link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" 
+                        style="color: #ecee8e;"
+                        data-name="Premium Battle Pass"
+                        data-date="12-11-2023"
+                        data-time="17:35"
+                        data-qty="3"
+                        data-price="₱264"
+                        data-payment="GCash"
+                        data-image="/assets/Premium Battle Pass.png">
+                        Order Details <i class="bi bi-arrow-right"></i>
+                     </a></div>
+                    <div class="row mt-5"><a href="/pages/Store/store.html#item-8" class="btn rounded-pill bg-primary text-light py-2 fs-4 fw-bold viewOrder" style="width: 75%;">Buy Again</a></div>
+                </div>
+            </div>
+        </div>
+        
     </div>
 
     <footer class="bg-light text-dark py-4" id="footer">
@@ -106,6 +196,7 @@
         </div>
       </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         window.addEventListener("resize", () => {
             console.log("Window width:", window.innerWidth);
@@ -117,6 +208,36 @@
             if (savedImage) {
                 document.getElementById("home-profile-icon").style.backgroundImage = "url('" + savedImage + "')";
             }
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // Attach event listener to all elements with class 'order-details'
+            document.querySelectorAll('.order-details').forEach(function(element) {
+                element.addEventListener('click', function(e) {
+                    e.preventDefault(); // Prevent the default link action
+
+                    // Get data from clicked element
+                    const name = this.dataset.name;
+                    const date = this.dataset.date;
+                    const time = this.dataset.time;
+                    const qty = this.dataset.qty;
+                    const method = this.dataset.payment;
+                    const price = this.dataset.price;
+                    const image = this.dataset.image;
+
+                    // Display the SweetAlert popup
+                    Swal.fire({
+                        title: name,
+                        html: `Order Placed: <b>${date}</b> | <b>${time}</b> <br>Qty: <b>${qty}</b> <br>Price: <b>${price}</b> <br>Payment Method: <b>${method}</b>`,
+                        imageUrl: image,
+                        imageHeight: 300,
+                        imageAlt: name,
+                        customClass: {
+                            popup: 'rounded-modal'
+                        }   
+                    });
+                });
+            });
         });
     </script>
     

@@ -67,4 +67,6 @@ body {
     font-size:2.4rem;
 }
 
-
+.scroll-offset{
+    scroll-margin-top: 250px;
+}

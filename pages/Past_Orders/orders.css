@@ -1,0 +1,43 @@
+.title-window {
+    max-width: 85%;
+    height: 11vh;
+    border-radius: 48px;
+    background: rgb(187,220,255);
+    background: linear-gradient(0deg, rgb(155, 190, 253) 0%, rgb(134, 182, 226) 100%);
+    overflow: hidden;
+    position: relative;
+}
+
+.content-window {
+    max-width: 85%;
+    height: 90vh;
+    margin-bottom: 3cqmin;
+    border-radius: 48px;
+    background: rgb(187,220,255);
+    background: linear-gradient(0deg, rgb(155, 190, 253) 0%, rgb(134, 182, 226) 100%);
+    overflow: hidden;
+    position: relative;
+}
+
+.text-shadow {
+    color: #fdffd6;
+    text-shadow: 2px 2px 5px #727272;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.item-image img{
+    height: 85%;
+    width: auto;
+    margin-top: -8%;
+}
+
+hr {
+    color: #727272;
+    width: 80%;
+    margin: auto;
+}
+
+.rounded-modal{
+    border-radius: 20px;
+}
