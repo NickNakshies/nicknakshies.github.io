@@ -106,6 +106,9 @@
 
                 <!-- POKE CART -->
         <div class="container-2">
+
+
+            <!-- CART LAMAN ITO FOSHO -->
             <div class="poke-cart">
 
                 <div class="poke-cart-nav">
@@ -148,14 +151,14 @@
                 <hr>
             </div>
 
+
+
+            <div id="cart-items"></div> <!-- Cart items will be dynamically inserted here -->
+
             <div class="remove-btn">
                 <button>Remove</button>
             </div>
-
-
-
-
-
+            <button onclick="clearCart()" class="clear-cart-btn">Clear Cart</button>
 
 
             </div>
@@ -260,37 +263,55 @@
     
     <script>
         document.addEventListener("DOMContentLoaded", function () {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        
+            const cartContainer = document.getElementById("cart-items");
             const quantityInputs = document.querySelectorAll(".product-quantity input");
             const minusButtons = document.querySelectorAll(".product-quantity button:first-of-type");
             const plusButtons = document.querySelectorAll(".product-quantity button:last-of-type");
             const priceElements = document.querySelectorAll(".product-price p");
             const totalElements = document.querySelectorAll(".product-total p");
             const totalCostInput = document.querySelector(".total-cost");
-            const cartHeaderTotal = document.getElementById("cart-header-total"); // Updates Cart Header ₱ 594
-            const navCartCount = document.getElementById("nav-cart-count"); // Updates Nav Cart Count
-            const cartHeaderItems = document.getElementById("cart-header-items"); // Updates "Items 3" in Cart Header
-    
+            const cartHeaderTotal = document.getElementById("cart-header-total");
+            const navCartCount = document.getElementById("nav-cart-count");
+            const cartHeaderItems = document.getElementById("cart-header-items");
+            const checkoutBtn = document.getElementById("checkout-btn");
+        
             function updateTotal() {
                 let grandTotal = 0;
                 let totalItems = 0;
-    
-                quantityInputs.forEach((input, index) => {
-                    let quantity = parseInt(input.value);
-                    let price = parseFloat(priceElements[index].textContent.replace("₱", "").trim());
+            
+                if (!cart || cart.length === 0) { 
+                    totalCostInput.value = "₱ 0"; 
+                    cartHeaderTotal.textContent = "₱ 0"; 
+                    navCartCount.textContent = "0"; 
+                    cartHeaderItems.textContent = "Items 0";
+                    return;
+                }
+            
+                cart.forEach((item, index) => {
+                    let quantity = item.quantity || 1;
+                    let price = item.price || 0;
                     let total = quantity * price;
                     
-                    totalElements[index].textContent = `₱ ${total}`;
+                    let totalElements = document.querySelectorAll(".product-total p");
+                    let quantityInputs = document.querySelectorAll(".product-quantity input");
+            
+                    if (totalElements[index] && quantityInputs[index]) {
+                        totalElements[index].textContent = `₱ ${total}`;
+                        quantityInputs[index].value = quantity;
+                    }
+            
                     grandTotal += total;
                     totalItems += quantity;
                 });
-    
-                // Update total cost
+            
                 totalCostInput.value = `₱ ${grandTotal}`;
-                cartHeaderTotal.textContent = `₱ ${grandTotal}`; // Update cart header total price
-                navCartCount.textContent = `${totalItems}`; // Update nav cart count
-                cartHeaderItems.textContent = `Items ${totalItems}`; // Update "Items X" in cart header
+                cartHeaderTotal.textContent = `₱ ${grandTotal}`;
+                navCartCount.textContent = `${totalItems}`;
+                cartHeaderItems.textContent = `Items ${totalItems}`;
             }
-    
+        
             minusButtons.forEach((btn, index) => {
                 btn.addEventListener("click", function () {
                     let quantity = parseInt(quantityInputs[index].value);
@@ -300,7 +321,7 @@
                     }
                 });
             });
-    
+        
             plusButtons.forEach((btn, index) => {
                 btn.addEventListener("click", function () {
                     let quantity = parseInt(quantityInputs[index].value);
@@ -308,33 +329,136 @@
                     updateTotal();
                 });
             });
-    
-            updateTotal(); // Initialize values on page load
-        });
-
-        document.addEventListener("DOMContentLoaded", function () {
-            const checkoutBtn = document.getElementById("checkout-btn");
-    
-            checkoutBtn.addEventListener("click", function (event) {
-                event.preventDefault(); // Prevent default button behavior
-    
-                // Fancy pop-up message
-                Swal.fire({
-                    title: "Thank you for your order!",
-                    text: "Your order has been successfully processed and updated in your Pokémon GO app.",
-                    icon: "success",
-                    confirmButtonText: "Go to Store",
-                    confirmButtonColor: "#91c7ff",
-                    showCloseButton: true, // "X" in the upper-right corner
-                    closeButtonHtml: "x" // Custom X icon
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.href = "../Store/store.html";
-                    }
+        
+            function renderCart() {
+                const cartContainer = document.querySelector(".poke-cart");
+            
+                // Keep the cart header visible
+                cartContainer.innerHTML = `
+                    <div class="poke-cart-nav">
+                        <div><p>Product Details</p></div>
+                        <p>Quantity</p>
+                        <p>Price</p>
+                        <p>Total</p>
+                    </div>
+                `;
+            
+                if (cart.length === 0) {
+                    cartContainer.innerHTML += `
+                        <div class="empty-cart">
+                            <p style="text-align: center; padding-top: 20px;font-size: 30px; color: #888;">Your cart is empty!</p>
+                        </div>
+                    `;
+                    return;
+                }
+            
+                cart.forEach((item, index) => {
+                    let cartItemHTML = `
+                        <div class="product">
+                            <div class="product-image">
+                                <img src="${item.image}" alt="${item.name}">
+                            </div>
+            
+                            <div class="product-details">
+                                <h5>${item.name}</h5>
+                                <h6><a href="#" class="remove-btn" data-index="${index}">Remove</a></h6>
+                            </div>
+            
+                            <div class="product-quantity">
+                                <button class="minus-btn" data-index="${index}"><i class='bx bx-minus'></i></button>
+                                <input type="text" value="${item.quantity}" class="quantity-input" data-index="${index}">
+                                <button class="plus-btn" data-index="${index}"><i class='bx bx-plus'></i></button>
+                            </div>
+            
+                            <div class="product-price">
+                                <p>₱ ${item.price}</p>
+                            </div>
+            
+                            <div class="product-total">
+                                <p>₱ ${item.price * item.quantity}</p>
+                            </div>
+                        </div>
+                        <div class="line"><hr></div>
+                    `;
+                    cartContainer.innerHTML += cartItemHTML;
                 });
-            });
+            
+                // Reattach event listeners for remove buttons
+                document.querySelectorAll(".remove-btn").forEach(button => {
+                    button.addEventListener("click", function (event) {
+                        event.preventDefault();
+                        let index = this.getAttribute("data-index");
+                        removeFromCart(index);
+                    });
+                });
+            
+                // Reattach event listeners for quantity buttons
+                document.querySelectorAll(".minus-btn").forEach(button => {
+                    button.addEventListener("click", function () {
+                        let index = this.getAttribute("data-index");
+                        updateQuantity(index, -1);
+                    });
+                });
+            
+                document.querySelectorAll(".plus-btn").forEach(button => {
+                    button.addEventListener("click", function () {
+                        let index = this.getAttribute("data-index");
+                        updateQuantity(index, 1);
+                    });
+                });
+            }
+            
+            // Function to update the quantity
+            function updateQuantity(index, change) {
+                let quantityInput = document.querySelector(`.quantity-input[data-index="${index}"]`);
+                
+                let quantity = parseInt(quantityInput.value);
+                if (quantity + change > 0) {
+                    quantity += change;
+                    cart[index].quantity = quantity;
+                    quantityInput.value = quantity;
+                    localStorage.setItem("cart", JSON.stringify(cart));
+                    updateTotal();
+                }
+            }
+        
+            function removeFromCart(index) {
+                cart.splice(index, 1);
+                localStorage.setItem("cart", JSON.stringify(cart));
+                renderCart(); // Ensures new indexes are assigned correctly
+                updateTotal();
+            }
+
+            function clearCart() {
+                localStorage.removeItem("cart");
+                cart = []; // Reset cart array
+                renderCart();
+                updateTotal();
+            }
+        
+            if (checkoutBtn) {
+                checkoutBtn.addEventListener("click", function (event) {
+                    event.preventDefault();
+        
+                    Swal.fire({
+                        title: "Thank you for your order!",
+                        text: "Your order has been successfully processed and updated in your Pokémon GO app.",
+                        icon: "success",
+                        confirmButtonText: "Go to Store",
+                        confirmButtonColor: "#91c7ff",
+                        showCloseButton: true,
+                        closeButtonHtml: "x"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = "../Store/store.html";
+                        }
+                    });
+                });
+            } 
+            renderCart();
+            updateTotal();
         });
-    </script>
+        </script>
     
 </body>
 </html>

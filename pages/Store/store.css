@@ -489,6 +489,22 @@ html, body {
 }
 .close-modal:hover {
     background: darkred;
-} */
+} 
 
+
+/*  --------------------------------------- POP UP / MODAL ----------------------------------------------  */
+.custom-swal-popup {
+    background: linear-gradient(to bottom, #fdffd6 55%, #91c7ff 45%) !important; /* Change this to any color */
+    color: white !important; /* Ensures text is visible */
+    border-radius: 15px !important; /* Optional: Rounded corners */
+    padding: 20px !important; /* Optional: Adjust padding */
+}
+
+.custom-swal-popup h2 {
+    color: rgb(0, 0, 0) !important; /* Change title color */
+}
+
+.custom-swal-popup p {
+    color: white !important; /* Change text color */
+}
 
