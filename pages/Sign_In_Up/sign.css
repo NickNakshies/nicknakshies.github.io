@@ -1,0 +1,78 @@
+/* Left Panel */
+.left-panel {
+    position: relative;
+    width: 50%;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.logo-img {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translate(-48%, -30%);
+    width: 490px;
+}
+
+.pikachu-img {
+    width: 550px;
+    height: 100%;
+    transform: translate(10%, 15%);
+}
+
+
+/* Right Panel */
+.right-panel {
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.6);
+    padding: 50px;
+    border-radius: 40px;
+    width: 660px;
+    height: 100%;
+}
+
+
+/* Form Styles */
+.login-title h2{
+    font-size: 55px;
+    font-weight: bold;
+    color: #fdffd0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+form label {
+    font-size: 30px;
+    font-weight: bold;
+    color: #fdffd0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.form-control {
+    width: 90%;
+    height: 60px;
+    border-radius: 30px;
+    background-color: #cbdf72;
+}
+
+.btn {
+    width: 50%;
+    border-radius: 20px;
+    font-weight: bold;
+    color: #fdffd0;
+}
+
+.create-account-text {
+    font-weight: 600;
+    font-size: 18px;
+    color: #222;
+}
+
+.create-account-text a {
+    color: blue;
+    font-weight: bold;
+    text-decoration: none;
+}

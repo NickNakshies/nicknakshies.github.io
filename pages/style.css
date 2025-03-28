@@ -1,10 +1,10 @@
 body {
-    font-family: 'Poppins';font-size: 22px;
+    font-family: 'Poppins', sans-serif; font-size: 22px;
 }
 
 body {
     background-image: url('../assets/Background.png');
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; 
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
