@@ -108,13 +108,16 @@ div.main-window {
 /*  --------------------------------------- ITEM STORE NAV BAR ----------------------------------------------  */
 
 .itemNav{
-    padding: 2rem 80px;
+    margin: 0px 80px 2rem;
+    padding: 2rem 0px 0px;
+    border-radius: 30px;
     position: sticky;
     top: 0;
     z-index: 9999; /* Ensures it stays above other elements */
     height: fit-content;
     backdrop-filter: blur(10px); /* Apply blur effect */
     transition: all 0.3s ease-in-out;
+    margin-bottom: 2rem;
 }
 
 html, body {
