@@ -368,17 +368,16 @@ input[type="text"] {
     color: #000000;
     font-size: 20px;
     font-weight: 500;
-    margin-right: 60px;
+    margin-right: 40px;
+    text-align: right;
+    min-width: 120px;
+    font-variant-numeric: tabular-nums; 
 }
 .product-details, .product-price, .product-total {
     flex-grow: 4; 
     text-align: center; 
-}
-.product-price, .product-total {
     min-width: 90px; 
-    flex-grow: 4;
 }
-
 
 /*  --------------------------------------- LINE! ----------------------------------------------  */
 
