@@ -43,10 +43,6 @@ div.main-window {
     color: #fdffd6; /* or white if dark background */
 }
 
-.navbar-light .navbar-nav .nav-link:hover {
-    color: #007bff;
-}
-
 /* Icon color */
 .navbar-light .navbar-nav .nav-link i {
     color: #fdffd6; /* or #fff for dark bg */

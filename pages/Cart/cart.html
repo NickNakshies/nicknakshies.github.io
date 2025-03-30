@@ -22,6 +22,11 @@
 
     <!-- JS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>document.addEventListener("DOMContentLoaded", function() {
+        if (localStorage.getItem("isLoggedIn") !== "true") {
+            window.location.href = "/pages/Sign_In_Up/signin.html";  // Redirect to login page
+        }
+    });</script>
 </head>
 
 <body>
@@ -45,7 +50,7 @@
                         <a class="nav-link fw-bold" href="/pages/Store/store.html#navbarContent">Featured</a>
                     </li>
 
-                    <li class="nav-item dropdown fs-3 me-4">
+                    <li class="nav-item dropdown fs-3 ms-4 me-2">
                         <a class="nav-link dropdown-toggle" href="#" id="storeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Store
                         </a>
@@ -56,7 +61,7 @@
                         </ul>
                     </li>
 
-                    <li class="nav-item fs-3 ms-3 me-4">
+                    <li class="nav-item fs-3 ms-4 me-2">
                         <a class="nav-link" href="#">About</a>
                     </li>
                 </ul>
@@ -176,6 +181,7 @@
                 <div class="cart-section">
                     <label for="shipping"><p>Payment Method</p></label>
                     <select id="shipping">
+                        <option value="" disabled selected hidden>Choose Payment</option>
                         <option>Gcash</option>
                         <option>PayPal</option>
                         <option>Card</option>
@@ -267,12 +273,6 @@
 
     
     <script>
-        
-        document.addEventListener("DOMContentLoaded", function() {
-            if (localStorage.getItem("isLoggedIn") !== "true") {
-                window.location.href = "/pages/Sign_In_Up/signin.html";  // Redirect to login page
-            }
-        });
 
         document.addEventListener("DOMContentLoaded", function () {
             let cart = JSON.parse(localStorage.getItem("cart")) || [];
