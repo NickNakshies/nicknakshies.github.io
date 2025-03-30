@@ -63,6 +63,14 @@ body {
     height: 125px;
 }
 
+ul>li>a.nav-link{
+    transition: 0.4s ease;
+}
+
+ul>li>a.nav-link:hover{
+    scale: 1.10;
+}
+
 .override-icon{
     font-size:2.4rem;
 }
@@ -71,15 +79,28 @@ body {
     scroll-margin-top: 250px;
 }
 
-.featured-image {
+img {
+    transition: 0.4s ease;
+}
+
+img:hover{
+    transform: scale(1.05);
+}
+
+.featured-image{
     text-align: center; 
     padding-top: 20px; /* Adjust spacing if needed */
 }
 
 .featured-image img {
+    width: 90%;
     margin-top: -5%;
-    max-width: 100%;
     height: auto;
+    transition: 0.4s ease;
+}
+
+.featured-image img:hover{
+    scale: 0.97;
 }
 
 .row {
@@ -88,10 +109,18 @@ body {
     flex-wrap: wrap;
 }
 
-.item-box, .poke-coins, .daily-bundles {
-    width: 400px;
-    height: auto;
-    max-width: 100%;
-    display: flex;
-    justify-content: center; /* Centers content */
+.item-box, .poke-coins, .daily-bundles{
+    width: 25%;
+    margin-right: 6%;
 }
+
+.row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+
+div a {
+    text-decoration: none;
+}
+
