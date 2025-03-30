@@ -72,21 +72,26 @@ body {
 }
 
 .featured-image {
-    margin-top: -50px; /* Adjust as needed */
-    text-align: center; /* Ensures centering */
+    text-align: center; 
+    padding-top: 20px; /* Adjust spacing if needed */
 }
 
-.item-box {
-    margin: -25px; /* Increase spacing */
-    margin-left: -60%;
+.featured-image img {
+    margin-top: -5%;
+    max-width: 100%;
+    height: auto;
 }
 
-.poke-coins {
-    margin: -25px; /* Increase spacing */
-    margin-left: -10%;
+.row {
+    display: flex;
+    justify-content: center; 
+    flex-wrap: wrap;
 }
 
-.daily-bundles{
-    margin: -35px; /* Increase spacing */
-    margin-left: 40%;
+.item-box, .poke-coins, .daily-bundles {
+    width: 400px;
+    height: auto;
+    max-width: 100%;
+    display: flex;
+    justify-content: center; /* Centers content */
 }
