@@ -14,9 +14,10 @@
     
     <!--CSS natin-->
     <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="./sign.css">
+    <link rel="stylesheet" href="./sign_up.css">
 
 </head>
+
 <body>
     <div class="main-window">
         <!-- NAVBAR START -->
@@ -68,7 +69,7 @@
                     </li>
                     <li class="nav-item me-1">
                         <a class="nav-link" href="#">
-                            <div class="d-flex align-items-center rounded-pill mt-1 px-4 py-1 fw-bold text-light" style="gap: 10px; background-color: #cbdf72;">Sign In
+                            <div class="d-flex align-items-center rounded-pill mt-1 px-4 py-1 fw-bold text-light" style="gap: 10px; background-color: #cbdf72;">Sign Up
                                 <i class="bi bi-person-circle fs-1 text-light"></i>
                             </div>
                         </a>   
@@ -77,34 +78,52 @@
             </div>
         </nav>  
 
+         <!-- SIGN UP START -->
             <div class="login-container d-flex">
-                <!-- Left Side: Pikachu Image -->
+                <!-- Left Side: Image -->
                 <div class="left-panel">
-                    <img src="../../assets/pikachubig.png" alt="pikachubig" class="pikachu-img">
+                    <img src="../../assets/mew.png" alt="mew" class="mew-img">
                     <img src="../../assets/pokemongologo.png" alt="Pokémon GO Logo" class="logo-img">
                 </div>
 
     
-                <!-- Right Side: Login Form -->
-                <div class="login-title align-items-center">
-                    <h2 style="margin-left: 40%; margin-bottom: 3%;">Log in</h2>
+                <!-- Right Side: Sign Up Form -->
+                <div class="sign-title align-items-center">
+                    <h2 style="margin-left: 35%; margin-bottom: 3%;">Sign up</h2>
                 <div class="right-panel p-4">
-                    <form id="loginForm" style = "margin-left: 10%; margin-top: 3%;">
-                        <div class="mb-3">
+                    <form id="signUpForm" style = "margin-left: 10%;">
+                        <div class="info mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                            <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                            <small id="emailError" class="text-danger d-none"></small>
                         </div>
-                        <div class="mb-3">
+
+                        <div class="info mb-3">
                             <label for="password" class="form-label">Password</label>
                             <input type="password" class="form-control" id="password" placeholder="Enter your password">
                         </div>
 
-                        <div class="d-flex flex-column align-items-center" style=" margin-left: -70px;">
-                        <button type="submit" class="btn btn-primary mt-4">Log In</button>
-                        <button type="button" class="btn btn-danger mt-3">Forgot Password?</button>
+                        <div class="info mb-3">
+                            <label for="confirmPass" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password" required>
+                            <small id="passwordError" class="text-danger d-none">Passwords do not match!</small>
+                        </div>
+
+                        <div class="info mb-3">
+                            <label for="playerID" class="form-label">Player ID</label>
+                            <input type="playerID" class="form-control" id="playerID" placeholder="#### #### ####">
+                            <input type="text" class="form-control" id="playerID" readonly placeholder="Player ID Automatically Generated!">
+                        </div>
+
+                        <div class="info mb-3">
+                            <label for="igName" class="form-label">In-game Name</label>
+                            <input type="igName" class="form-control" id="playerID" placeholder="Enter your name">
+                        </div>
+
+                        <div class="d-flex flex-column align-items-center" style=" margin-left: -70px; margin-bottom: 2%;">
+                            <button type="button" class="btn btn-primary mt-3" onclick="redirectToStore()">SUBMIT</button>
                     </div>
                     </form>
-                    <p class="create-account-text text-center mt-5">If you don't have a Pokémon GO account, <a href="#"><br>Create one today!</a></p>
                 </div>
                 </div>
             </div>
@@ -139,31 +158,60 @@
           
         </div>
       </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script>
-        window.addEventListener("resize", () => {
-            console.log("Window width:", window.innerWidth);
-        });
 
-        document.getElementById("loginForm").addEventListener("submit", function(e) {
-            e.preventDefault();
-
-            // Assuming your login validation goes here
-            const email = document.getElementById("email").value;
-            const password = document.getElementById("password").value;
-
-            // Simple check for demonstration purposes
-            if (email === "irishfermin910@gmail.com" && password === "pass") {
-                localStorage.setItem("isLoggedIn", "true"); // Set the flag
-                localStorage.setItem("email", email); // Save email
-                localStorage.setItem("password", password); // Save password
-                alert("Login successful!");
-                window.location.href = "/Boilerplate/index.html";
-            } else {
-                alert("Invalid username or password!");
+   <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // 🔹 Auto-generate Player ID when page loads
+        function generatePlayerID() {
+            let id = "";
+            for (let i = 0; i < 12; i++) {
+                if (i > 0 && i % 4 === 0) id += " "; // Add space every 4 digits
+                id += Math.floor(Math.random() * 10); // Generate a random number (0-9)
             }
-        });
+            document.getElementById("playerID").value = id;
+        }
+        generatePlayerID(); // Generate on page load
 
+        // 🔹 Handle Form Submission
+        document.getElementById("signUpForm").addEventListener("submit", function (e) {
+            e.preventDefault(); // Prevent form submission
+
+            // ✅ Email Validation
+            const email = document.getElementById("email").value.trim();
+            const emailError = document.getElementById("emailError");
+            const emailPattern = /^[^\s@]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            if (!emailPattern.test(email) || email.length < 5 || email.length > 320) {
+                emailError.textContent = "Invalid email! Must contain '@', a valid domain, and be 5-320 characters long.";
+                emailError.classList.remove("d-none");
+                return;
+            } else {
+                emailError.classList.add("d-none");
+            }
+
+            // ✅ Password Validation
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+            const passwordError = document.getElementById("passwordError");
+
+            if (password.length < 6) {
+                passwordError.textContent = "Password must be at least 6 characters.";
+                passwordError.classList.remove("d-none");
+                return;
+            } else if (password !== confirmPassword) {
+                passwordError.textContent = "Passwords do not match!";
+                passwordError.classList.remove("d-none");
+                return;
+            } else {
+                passwordError.classList.add("d-none");
+            }
+
+            // ✅ If everything is valid, show success and redirect
+            alert("Sign-up successful!");
+            window.location.href = "../pages/Store/store.html";
+        });
+    });
+    
     // Load profile image on home page
         document.addEventListener("DOMContentLoaded", function() {
             var savedImage = localStorage.getItem("profileImage");
