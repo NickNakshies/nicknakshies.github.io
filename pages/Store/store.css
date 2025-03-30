@@ -199,7 +199,7 @@ html, body {
 /* General Style for All Buttons */
 .pref-item {
     padding: 5px 35px;
-    border: 2px solid #ffe67d; /* Default border color */
+    border: 3px solid #ffe67d; /* Default border color */
     font-size: 25px;
     border-radius: 50px;
     transition: border-color 0.3s ease, background-color 0.3s ease;
@@ -329,6 +329,15 @@ html, body {
     max-width: 1300px;
     margin: 0 auto;
 }
+.item-boxess {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Ensures equal spacing */
+    gap: 20px;
+    padding: 20px 80px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
 
 .card {
     width: calc(33.33% - 20px); /* 3 per row */
@@ -383,7 +392,8 @@ html, body {
 }
 
 #small-images-hide img{
-
+    width: 0px;
+    height: 0px;
     visibility: none;
     opacity: 0;
 }
@@ -446,7 +456,13 @@ html, body {
     width: 1000px; /* Adjust width */
 }
 
-/* modal */
+.hidden-name {
+    display: none;
+}
+.hiddens-name {
+    display: none;
+}
+
 
 /*  --------------------------------------- POPUP CARD ----------------------------------------------  */
  .modal {
