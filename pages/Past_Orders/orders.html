@@ -18,6 +18,14 @@
     <link rel="stylesheet" href="../Store/store.css">
     <link rel="stylesheet" href="../Profile/profile.css">
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            if (localStorage.getItem("isLoggedIn") !== "true") {
+                window.location.href = "/pages/Sign_In_Up/signin.html";  // Redirect to login page
+            }
+        });
+    </script>
+
 </head>
 <body>
     <div class="main-window">
@@ -201,13 +209,6 @@
         window.addEventListener("resize", () => {
             console.log("Window width:", window.innerWidth);
         });
-
-        document.addEventListener("DOMContentLoaded", function() {
-            if (localStorage.getItem("isLoggedIn") !== "true") {
-                window.location.href = "/pages/Sign_In_Up/signin.html";  // Redirect to login page
-            }
-        });
-
 
         document.addEventListener("DOMContentLoaded", function() {
             // Attach event listener to all elements with class 'order-details'
