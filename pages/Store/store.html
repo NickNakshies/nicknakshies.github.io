@@ -749,13 +749,29 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// Function to Add Item to Cart (Save in localStorage)
-function addToCart(name, image, price) {
+// Function to Add Item to Cart
+function addToCart(itemName, imageSrc, itemPrice) {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    cart.push({ name, image, price });
+
+    // Check if the item already exists in the cart
+    let existingItem = cart.find(item => item.name === itemName);
+
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({
+            name: itemName,
+            image: imageSrc,
+            price: itemPrice,
+            quantity: 1
+        });
+    }
     localStorage.setItem("cart", JSON.stringify(cart));
-    console.log("Cart Updated:", cart);
+    if (typeof renderCart === "function") {
+        renderCart();
+    }
 }
+
 
     </script>
     
