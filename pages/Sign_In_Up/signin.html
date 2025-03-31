@@ -104,7 +104,7 @@
                         <p class="forgot-pass text-center mt-3">Forgot Password?</p>
                     </div>
                     </form>
-                    <p class="create-account-text text-center mt-5">If you don't have a Pokémon GO account, <a href="signup.html"><br>Create one today!</a></p>
+                    <p class="create-account-text text-center mt-5">If you don't have a Pokémon GO account, <a href="signup.html" onclick="localStorage.clear()"><br>Create one today!</a></p>
                 </div>
                 </div>
             </div>
@@ -155,16 +155,18 @@
 
             const email = document.getElementById("email").value.trim();
             const password = document.getElementById("password").value.trim();
+            const signin_email = localStorage.getItem("signup_email");
+            const signin_password = localStorage.getItem("signup_password");
 
             // 🔹 Replace this with real authentication in production
-            if (email === "irishfermin910@gmail.com" && password === "pass") {
+            if (email === signin_email && password === signin_password) {
                 localStorage.setItem("isLoggedIn", "true"); // Store login status
                 localStorage.setItem("email", email); // Store the email (optional)
                 
                 alert("Login successful!");
                 window.location.href = "/Boilerplate/index.html"; // Redirect to homepage
             } else {
-                alert("Invalid username or password!");
+                alert("Invalid email or password!");
             }
         });
     }

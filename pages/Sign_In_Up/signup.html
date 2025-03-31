@@ -112,12 +112,12 @@
                         <div class="info mb-3">
                             <label for="playerID" class="form-label">Player ID</label>
                             <input type="playerID" class="form-control" id="playerID" placeholder="#### #### ####">
-                            <input type="text" class="form-control" id="playerID" readonly placeholder="Player ID Automatically Generated!">
+                            <input type="text" class="form-control" readonly placeholder="Player ID Automatically Generated!">
                         </div>
 
                         <div class="info mb-3">
                             <label for="igName" class="form-label">In-game Name</label>
-                            <input type="igName" class="form-control" id="playerID" placeholder="Enter your name">
+                            <input type="igName" class="form-control" id="playerName" placeholder="Enter your name">
                         </div>
 
                         <div class="d-flex flex-column align-items-center" style=" margin-left: -10%; margin-bottom: 2%;">
@@ -160,6 +160,9 @@
       </footer>
 
    <script>
+
+
+
     document.addEventListener("DOMContentLoaded", function () {
         // 🔹 Auto-generate Player ID when page loads
         function generatePlayerID() {
@@ -169,19 +172,22 @@
                 id += Math.floor(Math.random() * 10); // Generate a random number (0-9)
             }
             document.getElementById("playerID").value = id;
+            localStorage.setItem("player_ID", id);
         }
         generatePlayerID(); // Generate on page load
+
+        
 
         // 🔹 Handle Form Submission
         document.getElementById("signUpForm").addEventListener("submit", function (e) {
             e.preventDefault(); // Prevent form submission
 
             // ✅ Email Validation
-            const email = document.getElementById("email").value.trim();
+            const signup_email = document.getElementById("email").value.trim();
             const emailError = document.getElementById("emailError");
             const emailPattern = /^[^\s@]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-            if (!emailPattern.test(email) || email.length < 5 || email.length > 320) {
+            if (!emailPattern.test(signup_email) || signup_email.length < 5 || signup_email.length > 320) {
                 emailError.textContent = "Invalid email! Must contain '@', a valid domain, and be 5-320 characters long.";
                 emailError.classList.remove("d-none");
                 return;
@@ -190,15 +196,19 @@
             }
 
             // ✅ Password Validation
-            const password = document.getElementById("password").value;
+            const signup_password = document.getElementById("password").value;
             const confirmPassword = document.getElementById("confirmPassword").value;
             const passwordError = document.getElementById("passwordError");
+            const playerName = document.getElementById("playerName").value;
+            localStorage.setItem("playerName", playerName);
+
+            console.log(localStorage.getItem("playerName"));
 
             if (password.length < 6) {
                 passwordError.textContent = "Password must be at least 6 characters.";
                 passwordError.classList.remove("d-none");
                 return;
-            } else if (password !== confirmPassword) {
+            } else if (signup_password !== confirmPassword) {
                 passwordError.textContent = "Passwords do not match!";
                 passwordError.classList.remove("d-none");
                 return;
@@ -208,6 +218,12 @@
 
             // ✅ If everything is valid, show success and redirect
             alert("Sign-up successful!");
+            localStorage.setItem("signup_email", signup_email);
+            localStorage.setItem("signup_password", signup_password);
+            const currentDate = new Date();
+            const joinDate = `${currentDate.toLocaleString('default', { month: 'long' })} ${currentDate.getFullYear()}`;
+            localStorage.setItem("joinDate", joinDate);
+
             window.location.href = "/pages/Sign_In_Up/signin.html";
         });
     });

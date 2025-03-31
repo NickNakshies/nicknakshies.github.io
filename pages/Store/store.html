@@ -68,7 +68,7 @@
                     </li>
                     <li class="nav-item me-1">
                         <a class="nav-link" href="../Profile/profile.html">
-                            <div class="d-flex align-items-center rounded-pill mt-1 px-4 py-1 text-light fw-bold" style="gap: 10px; background-color: #cbdf72;">Sign In
+                            <div class="d-flex align-items-center rounded-pill mt-1 px-4 py-1 text-light fw-bold" style="gap: 10px; background-color: #cbdf72;">Profile
                                 <i class="bi bi-person-circle fs-1 text-light"></i>
                             </div>
                         </a>   
@@ -639,7 +639,6 @@ document.addEventListener("DOMContentLoaded", function () {
             event.stopPropagation();
 
             // Get item details
-            const card = this.querySelector(".card")?.textContent || "Not Found";
             const imageSrc = this.querySelector(".main-image")?.src || "";
             const itemName = this.querySelector("h3")?.textContent || "Unnamed Item";
             const itemDescription = this.querySelector("p")?.textContent || "No description available.";

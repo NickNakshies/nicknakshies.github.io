@@ -68,7 +68,7 @@
                     </li>
                     <li class="nav-item me-1">
                         <a class="nav-link" href="../pages/Profile/profile.html">
-                            <div class="d-flex align-items-center rounded-pill mt-1 px-4 py-1 fw-bold text-light" style="gap: 10px; background-color: #cbdf72;">Sign In
+                            <div class="d-flex align-items-center rounded-pill mt-1 px-4 py-1 fw-bold text-light" style="gap: 10px; background-color: #cbdf72;">Profile
                                 <i class="bi bi-person-circle fs-1 text-light"></i>
                             </div>
                         </a>   
@@ -94,12 +94,12 @@
                     </form>
                 </div>
                 <div class="col-md-5 fw-bold fs-4 mt-3 ms-5 me-3 username-fade">
-                    <p><strong>Username:</strong> Ashley_Jewel</p>
-                    <p><strong>Joined:</strong> March 2025</p>
+                    <strong class="me-3">User ID:</strong><span id="playerID"></span><br>
+                    <strong class="me-3">Date Joined:</strong><span id="joinDate"></span>
                 </div>
                 <div class="col ms-1">
                     <div style="position: relative; display: inline-block;" class="viewOrder">
-                        <a href="" class="btn rounded-pill bg-primary text-light fs-5 fw-bold px-4 py-3 mt-3 shadow"> View All Orders</a>
+                        <a href="/pages/Past_Orders/orders.html" class="btn rounded-pill bg-primary text-light fs-5 fw-bold px-4 py-3 mt-3 shadow"> View All Orders</a>
                         <img src="../../assets/Pikachu.png" alt="" style="position: absolute; height: 85%; top: -40%; left: 65%;"></img>
                     </div>
                     
@@ -108,7 +108,7 @@
             <div class="row p-4 mt-1 ms-4 fw-bold fs-4 pb-5">
                 <div class="col col-lg-3 ms-2">
                     <a href="#" class="profile-link row" style="margin-bottom: 5%;">Profile Settings</a>
-                    <a href="#" class="profile-link row" style="margin-bottom: 10%;">View Orders</a>
+                    <a href="/pages/Past_Orders/orders.html" class="profile-link row" style="margin-bottom: 10%;">View Orders</a>
                 </div>
 
                 <!--User Info-->
@@ -187,32 +187,27 @@
             loadSavedData();
         });
 
-        document.addEventListener("DOMContentLoaded", function() {
-            if (localStorage.getItem("isLoggedIn") !== "true") {
-                window.location.href = "/pages/Sign_In_Up/signin.html";  // Redirect to login page
+        function loadJoinDate() {
+            const savedJoinDate = localStorage.getItem("joinDate");
+            if (savedJoinDate) {
+                document.getElementById("joinDate").textContent = savedJoinDate;
             }
-        });
+        }
 
         function loadSavedData() {
             let savedImage = localStorage.getItem("profileImage");
-            let savedName = localStorage.getItem("name");
+            let savedName = localStorage.getItem("playerName");
             let savedEmail = localStorage.getItem("email");
-            let savedPassword = localStorage.getItem("password");
+            let savedPassword = localStorage.getItem("signup_password");
+            let player_ID = localStorage.getItem("player_ID")
 
             if (savedImage) document.getElementById("set-pic").style.backgroundImage = `url('${savedImage}')`;
             if (savedName) document.getElementById("name").value = savedName;
             if (savedEmail) document.getElementById("email").value = savedEmail.trim();
             if (savedPassword) document.getElementById("password").value = savedPassword;
+            if (player_ID) document.getElementById("playerID").textContent = player_ID;
+            loadJoinDate();
         }
-
-        document.getElementById("logout-btn").addEventListener("click", function() {
-            localStorage.clear();
-            localStorage.removeItem("isLoggedIn");
-            alert("Logged out successfully!");
-        });
-
-
-
 
         function loadFile(event) {
             event.preventDefault();
@@ -243,9 +238,9 @@
                 return;
            } else {
                 localStorage.setItem("profileImage", profileImage);
-                localStorage.setItem("name", name);
+                localStorage.setItem("playerName", name);
                 localStorage.setItem("email", email);
-                localStorage.setItem("password", password);
+                localStorage.setItem("signup_password", password);
                 alert("Profile updated successfully!");
            }
         }
