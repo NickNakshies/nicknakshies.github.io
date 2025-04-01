@@ -19,7 +19,7 @@
 
 .pikachu-img {
     width: 70%;
-    height: 80%;
+    height: auto;
     transform: translate(10%, 15%);
 }
 

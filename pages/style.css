@@ -23,6 +23,7 @@ body {
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
     overflow: hidden;
     padding-bottom: 3%;
+    padding-right: 1%;
 }
 
 /* Transparent navbar */
