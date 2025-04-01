@@ -26,7 +26,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             if (localStorage.getItem("isLoggedIn") !== "true") {
-                window.location.href = "/pages/Sign_In_Up/signin.html";  // Redirect to login page
+                window.location.href = "/pages/Sign_In_Up/signin.html"; 
             }
         });
     </script>
@@ -647,33 +647,33 @@ document.addEventListener("DOMContentLoaded", function () {
             event.preventDefault();
             event.stopPropagation();
 
-            // Get item details
+    
             const imageSrc = this.querySelector(".main-image")?.src || "";
             const itemName = this.querySelector("h3")?.textContent || "Unnamed Item";
             const itemDescription = this.querySelector("p")?.textContent || "No description available.";
             const itemPrice = this.querySelector(".price-button span")?.textContent || "0.00";
             const itemId = this.id;
 
-            // Debug: Ensure values are correct
+           
             console.log("Item Clicked:", {imageSrc, itemName, itemDescription, itemPrice, itemId });
 
             if (!imageSrc || !itemName) {
                 console.error("Missing item details! Check your HTML structure.");
-                return; // Exit function if details are missing
+                return; 
             }
 
-            // Store and disable scrolling
+  
             scrollY = window.scrollY || window.pageYOffset;
             console.log("Stored Scroll Position:", scrollY);
 
             document.documentElement.style.overflow = "hidden";
             document.body.style.overflow = "hidden";
 
-            // Collect small images and their quantities
+            
             const smallImages = this.querySelectorAll(".small-images img");
             const quantities = this.querySelectorAll(".small-images span");
-            const smallImageNames = this.querySelectorAll(".small-images .hidden-name"); // Get hidden names
-            const extraNameElement = this.querySelector(".hiddens-name"); // Get hiddens-name
+            const smallImageNames = this.querySelectorAll(".small-images .hidden-name"); 
+            const extraNameElement = this.querySelector(".hiddens-name"); 
             const extraName = extraNameElement ? extraNameElement.textContent.trim() : "";
 
             let smallImagesHTML = `<ul style="list-style: none; padding: 0; margin: 0; display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">`; 
@@ -693,13 +693,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
             smallImagesHTML += `</ul>`; 
 
-            //For PokeCoins
+          
             let extraNameHTML = "";
             if (["coin-1", "coin-2", "coin-3", "coin-4", "coin-5", "coin-6", "mystery-box-1"].includes(itemId) && extraName) {
                 extraNameHTML = `<p style="display: block; color: blue; font-weight: bold; text-align: center; margin-bottom: 30px; margin-top:20px;">${extraName}</p>`;
             }
 
-            // Show Swal popup
+           
             Swal.fire({
                 title: itemName,
                 html: `
@@ -721,7 +721,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     document.querySelector("#add-to-cart-btn").addEventListener("click", function () {
                         addToCart(itemName, imageSrc, itemPrice);
 
-                        // Close the current modal before showing the success message
+               
                         Swal.close();
 
                         setTimeout(() => {
@@ -732,7 +732,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 confirmButtonText: "OK",
                                 confirmButtonColor: "#d30e0e"
                             }).then(() => {
-                                // Restore scrolling only after the confirmation modal is closed
+                            
                                 document.documentElement.style.overflow = "";
                                 document.body.style.overflow = "";
                                 window.scrollTo(0, scrollY);
@@ -744,7 +744,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 willClose: () => {
                     console.log("Restoring Scroll Position:", scrollY);
 
-                    // Restore scrolling
+                   
                     document.documentElement.style.overflow = "";
                     document.body.style.overflow = "";
 
@@ -758,11 +758,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// Function to Add Item to Cart
+
 function addToCart(itemName, imageSrc, itemPrice) {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    // Check if the item already exists
+   
     let existingItem = cart.find(item => item.name === itemName);
 
     if (existingItem) {
