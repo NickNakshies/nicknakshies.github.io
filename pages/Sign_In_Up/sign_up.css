@@ -18,8 +18,8 @@
 }
 
 .mew-img {
-    width: 95%;
-    height: 100%;
+    width: 90%;
+    height: auto;
     transform: translate(1%, 15%);
 }
 

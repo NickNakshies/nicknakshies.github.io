@@ -86,8 +86,32 @@ form label {
 
 .create-account-text a {
     color: #f5ff3e;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    text-shadow: 2px 2px 4px #979797;
     font-weight: bold;
     text-decoration: none;
     text-decoration: underline;
+    transition: 0.3s ease;
+}
+
+.create-account-text a:hover{
+    color: #459a0088;
+    transform:scale(1.1)
+}
+
+
+.hoverButton{
+    transition: 0.3s ease;
+}
+
+.hoverButton:hover{
+    box-shadow: 3px 2px 8px #6d6d6d;
+    transform:scale(1.1)
+}
+
+.hoverLink{
+    transition: 0.3s ease;
+}
+
+.hoverLink:hover{
+    transform:scale(1.1)
 }
