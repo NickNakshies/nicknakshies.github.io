@@ -33,22 +33,18 @@ div.main-window {
     background-color: transparent !important; /* make navbar clear */
 }
 
-/* Optional: remove box shadow */
 .navbar-light {
     box-shadow: none !important;
 }
 
-/* Navbar links color */
 .navbar-light .navbar-nav .nav-link {
-    color: #fdffd6; /* or white if dark background */
+    color: #fdffd6; 
 }
 
-/* Icon color */
 .navbar-light .navbar-nav .nav-link i {
-    color: #fdffd6; /* or #fff for dark bg */
+    color: #fdffd6; 
 }
 
-/* Optional: style the brand/logo image */
 .navbar-brand img {
     height: 145px;
 }
@@ -94,7 +90,7 @@ div.main-window {
 
 .carousel-inner {
     width: 100%;
-    height: 550px; /* Set your preferred height */
+    height: 550px; 
 }
 
 .carousel-item img {
@@ -109,9 +105,9 @@ div.main-window {
     border-radius: 30px;
     position: sticky;
     top: 0;
-    z-index: 9999; /* Ensures it stays above other elements */
+    z-index: 9999; 
     height: fit-content;
-    backdrop-filter: blur(10px); /* Apply blur effect */
+    backdrop-filter: blur(10px); 
     transition: all 0.3s ease-in-out;
     margin-bottom: 2rem;
 }
@@ -119,12 +115,12 @@ div.main-window {
 html, body {
     height: 100%;
     margin: 0;
-    overflow-x: hidden; /* Allow vertical scrolling */
+    overflow-x: hidden; 
     scroll-behavior: smooth;
 }
 .main-window {
     height: auto;
-    overflow: visible; /* Ensure it doesn't block sticky behavior */
+    overflow: visible; 
 }
 
 
@@ -166,8 +162,8 @@ html, body {
 }
 
 .NAVIGATION a:hover::after {
-    width: 100%; /* Expands to full width */
-    left: 0; /* Aligns it from the start */
+    width: 100%; 
+    left: 0; 
    
 }
 
@@ -219,7 +215,7 @@ html, body {
     border-radius: 50px;
     font-size: 25px;
     transition: background-color 0.3s ease, border-color 0.3s ease;
-    position: relative; /* Ensures dropdown positions correctly */
+    position: relative; 
     z-index: 1000;
 }
 
@@ -231,31 +227,31 @@ html, body {
 }
 
 
-/* Fix dropdown display issue */
+
 .dropdown-pref {
-    display: none; /* Hidden by default */
+    display: none; 
     position: absolute;
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
     background: #fff;
     border-radius: 10px;
-    padding: 10px 0; /* Reduced padding */
+    padding: 10px 0; 
     list-style: none;
     width: 200px;
     z-index: 9999;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
 }
 
-/* Ensure dropdown shows correctly */
+
 .dropdown-pref.show {
     display: block;
 }
 
 .dropdown-option {
-    padding: 10px; /* Reduced padding */
+    padding: 10px; 
     text-align: center;
-    cursor: pointer; /* Ensure it's clickable */
+    cursor: pointer; 
 }
 
 .dropdown-option a {
@@ -322,7 +318,7 @@ html, body {
 .item-boxes {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Ensures equal spacing */
+    justify-content: center; 
     gap: 20px;
     padding: 20px 80px;
     max-width: 1300px;
@@ -331,7 +327,7 @@ html, body {
 .item-boxess {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Ensures equal spacing */
+    justify-content: center; 
     gap: 20px;
     padding: 20px 80px;
     max-width: 1300px;
@@ -339,8 +335,8 @@ html, body {
 }
 
 .card {
-    width: calc(33.33% - 20px); /* 3 per row */
-    min-width: 350px; /* Prevents shrinking too much */
+    width: calc(33.33% - 20px); 
+    min-width: 350px; 
     background: linear-gradient(to bottom, #fdffd6 55%, #91c7ff 45%);
     border-radius: 25px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -360,15 +356,15 @@ html, body {
     box-shadow: 12px 12px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Responsive adjustments */
+
 @media (max-width: 1024px) {
     .card {
-        width: calc(50% - 2px); /* 2 per row */
+        width: calc(50% - 2px);
     }
 }
 @media (max-width: 768px) {
     .card {
-        width: 100%; /* 1 per row */
+        width: 100%; 
     }
 }
 
@@ -420,8 +416,8 @@ html, body {
     cursor: pointer;
     transition: background 0.3s ease;
     padding: 10px 20px;
-    white-space: nowrap; /* Prevents text from wrapping */
-    flex-shrink: 0; /* Prevents button from shrinking */
+    white-space: nowrap; 
+    flex-shrink: 0; 
 }
 .price-button span {
     margin-left: 5px;
@@ -434,16 +430,16 @@ html, body {
     min-height: 100px;
     margin-top: 2rem;
     display: flex;
-    align-items: center; /* Ensures items stay aligned */
+    align-items: center; 
     justify-content: space-between;
     width: 100%;
     text-align: left;
-    gap: 10px; /* Adds spacing */
-    flex-wrap: wrap; /* Prevents breaking */
+    gap: 10px; 
+    flex-wrap: wrap; 
 }
 
 .card-content div {
-    flex: 1; /* Makes text take up space */
+    flex: 1; 
 }
 
 .card-content button {
@@ -452,7 +448,7 @@ html, body {
     font-size: 15px;
 }
 .mystery-box-card {
-    width: 1000px; /* Adjust width */
+    width: 1000px; 
 }
 
 .hidden-name {
@@ -509,17 +505,17 @@ html, body {
 
 /*  --------------------------------------- POP UP / MODAL ----------------------------------------------  */
 .custom-swal-popup {
-    background: linear-gradient(to bottom, #fdffd6 55%, #91c7ff 45%) !important; /* Change this to any color */
-    color: white !important; /* Ensures text is visible */
-    border-radius: 15px !important; /* Optional: Rounded corners */
-    padding: 20px !important; /* Optional: Adjust padding */
+    background: linear-gradient(to bottom, #fdffd6 55%, #91c7ff 45%) !important; 
+    color: white !important; 
+    border-radius: 15px !important; 
+    padding: 20px !important; 
 }
 
 .custom-swal-popup h2 {
-    color: rgb(0, 0, 0) !important; /* Change title color */
+    color: rgb(0, 0, 0) !important; 
 }
 
 .custom-swal-popup p {
-    color: white !important; /* Change text color */
+    color: white !important; 
 }
 
