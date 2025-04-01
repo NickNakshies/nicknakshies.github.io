@@ -103,11 +103,11 @@
                 </div>
                 <div class="col-md-5 fw-bold fs-4 mt-3 ms-5 me-3 username-fade">
                     <strong>User ID:</strong><span id="playerID"></span><br>
-                    <strong>Date Joined:</strong><span id="joinDate"></span>
+                    <strong>Joined:</strong><span id="joinDate"></span>
                 </div>
                 <div class="col ms-1">
                     <div style="position: relative; display: inline-block;" class="viewOrder">
-                        <a href="" class="btn rounded-pill bg-primary text-light fs-5 fw-bold px-4 py-3 mt-3 shadow"> View All Orders</a>
+                        <a href="/pages/Past_Orders/orders.html" class="btn rounded-pill bg-primary text-light fs-5 fw-bold px-4 py-3 mt-3 shadow"> View All Orders</a>
                         <img src="../../assets/Pikachu.png" alt="" style="position: absolute; height: 85%; top: -40%; left: 65%;"></img>
                     </div>
                     
@@ -116,7 +116,7 @@
             <div class="row p-4 mt-1 ms-4 fw-bold fs-4 pb-5">
                 <div class="col col-lg-3 ms-2">
                     <a href="#" class="profile-link row" style="margin-bottom: 5%;">Profile Settings</a>
-                    <a href="#" class="profile-link row" style="margin-bottom: 10%;">View Orders</a>
+                    <a href="/pages/Past_Orders/orders.html" class="profile-link row" style="margin-bottom: 10%;">View Orders</a>
                 </div>
 
                 <!--User Info-->
@@ -182,7 +182,7 @@
           <!-- Disclaimer -->
           <div class="small fs-5">
             No copyright infringement intended.<br>
-            For educational purposes only. All rights reserved.
+            For educational purposes only. <br>All rights reserved.
           </div>
           
         </div>
@@ -225,6 +225,14 @@
             };
             reader.readAsDataURL(event.target.files[0]);
         }
+
+        function loadJoinDate() {
+            const savedJoinDate = localStorage.getItem("joinDate");
+            if (savedJoinDate) {
+                document.getElementById("joinDate").textContent = savedJoinDate;
+            }
+        }
+        loadJoinDate();
 
         function saveUserData() {
             event.preventDefault();
