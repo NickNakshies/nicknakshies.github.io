@@ -11,7 +11,7 @@
 
     <title>Sign Up</title>
 
-    <!-- Poppines Font-->
+    <!-- Poppins Font-->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- BootStrap-->
@@ -190,25 +190,23 @@
         });
 
     document.addEventListener("DOMContentLoaded", function () {
-        // 🔹 Auto-generate Player ID when page loads
         function generatePlayerID() {
             let id = "";
             for (let i = 0; i < 12; i++) {
-                if (i > 0 && i % 4 === 0) id += " "; // Add space every 4 digits
-                id += Math.floor(Math.random() * 10); // Generate a random number (0-9)
+                if (i > 0 && i % 4 === 0) id += " "; 
+                id += Math.floor(Math.random() * 10); 
             }
             document.getElementById("playerID").value = id;
             localStorage.setItem("player_ID", id);
         }
-        generatePlayerID(); // Generate on page load
+        generatePlayerID(); 
 
         
 
-        // 🔹 Handle Form Submission
         document.getElementById("signUpForm").addEventListener("submit", function (e) {
-            e.preventDefault(); // Prevent form submission
+            e.preventDefault();
 
-            // ✅ Email Validation
+            // Email Validation
             const signup_email = document.getElementById("email").value.trim();
             const emailError = document.getElementById("emailError");
             const emailPattern = /^[^\s@]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -221,7 +219,7 @@
                 emailError.classList.add("d-none");
             }
 
-            // ✅ Password Validation
+            // Password Validation
             const signup_password = document.getElementById("password").value;
             const confirmPassword = document.getElementById("confirmPassword").value;
             const passwordError = document.getElementById("passwordError");
@@ -242,7 +240,6 @@
                 passwordError.classList.add("d-none");
             }
 
-            // ✅ If everything is valid, show success and redirect
             alert("Sign-up successful!");
             localStorage.setItem("signup_email", signup_email);
             localStorage.setItem("signup_password", signup_password);
@@ -254,7 +251,6 @@
         });
     });
     
-    // Load profile image on home page
         document.addEventListener("DOMContentLoaded", function() {
             var savedImage = localStorage.getItem("profileImage");
             if (savedImage) {

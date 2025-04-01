@@ -1,4 +1,4 @@
-/* Left Panel */
+/* Left Panel CSS yung images*/
 .left-panel {
     position: relative;
     width: 50%;
@@ -24,7 +24,7 @@
 }
 
 
-/* Right Panel */
+/* Right Panel for filling info */
 .right-panel {
     justify-content: center;
     align-items: center;
@@ -36,7 +36,7 @@
 }
 
 
-/* Form Styles */
+
 .login-title h2{
     font-size: 55px;
     font-weight: bold;
@@ -72,10 +72,10 @@ form label {
 
 .forgot-pass {
     font-size: 20px;
-    color: #e23a3a; /* Change text color */
-    font-weight: bold; /* Make it bold */
-    cursor: pointer; /* Make it look clickable */
-    text-decoration: underline; /* Add underline */
+    color: #e23a3a; 
+    font-weight: bold; 
+    cursor: pointer; 
+    text-decoration: underline;
 }
 
 .create-account-text {
