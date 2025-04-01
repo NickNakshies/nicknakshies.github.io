@@ -3,7 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-    <title>Layout</title>
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon//favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon//apple-touch-icon.png" />
+    <link rel="manifest" href="/assets/favicon//site.webmanifest" />
+
+    <title>Profile | Pokemon GO Web Store</title>
 
     <!-- Poppines Font-->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -29,7 +35,7 @@
     <div class="main-window">
         <!-- NAVBAR START -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light px-4 mt-0 ms-3">
-            <a class="navbar-brand" href="/Boilerplate/index.html">
+            <a class="navbar-brand" href="../../index.html">
                 <img src="../../assets/Logo.png" alt="Logo" >
             </a>
 
@@ -86,7 +92,7 @@
         </nav>  
 
         <!--Profile-->
-        <div class="container mt-3 profile-window shadow-lg overflow-scroll">
+        <div class="container mt-3 profile-window shadow overflow-scroll">
             <div class="p-4 mt-1 row">
                 <h2 class="fw-bold fs-1" style="color: #fdffd6; text-shadow: 2px 2px 5px #727272;">Profile</h2>
             </div>
@@ -102,7 +108,7 @@
                     </form>
                 </div>
                 <div class="col-md-5 fw-bold fs-4 mt-3 ms-5 me-3 username-fade">
-                    <strong class="me-3">User ID:</strong><span id="playerID"></span><br>
+                    <strong class="me-3">Player ID:</strong><span id="playerID"></span><br>
                     <strong class="me-3">Joined:</strong><span id="joinDate"></span>
                 </div>
                 <div class="col ms-1">
@@ -123,7 +129,7 @@
                 <div class="col me-5">
                     <div class="row">
                         <div class="col">
-                            <label style="color: #fdffd6; text-shadow: 2px 2px 5px #5c5c5c;">Name</label><br>
+                            <label style="color: #fdffd6; text-shadow: 2px 2px 5px #5c5c5c;">Player Name</label><br>
                             <input type="text" id="name" class="form-control" placeholder="Name" required style="width: 82%;"><br>
                         </div>
                         <div class="col">
@@ -151,7 +157,7 @@
                         <a href="/pages/Sign_In_Up/signin.html" id="logout-btn" class="text-danger profile-link" ><i class="bi bi-power me-3"></i>Log Out</a>
                     </div>    
                     <div class="col offset-lg-6">
-                        <button type="submit" class="btn ms-3 rounded-pill bg-primary text-light fs-5 px-4 py-3 fw-bold shadow viewOrder" onclick="saveUserData()"><i class="bi bi-floppy me-2"></i> Save Settings</button>
+                        <button type="submit" class="btn ms-3 rounded-pill bg-primary text-light fs-5 px-4 py-3 fw-bold shadow-lg viewOrder" onclick="saveUserData()"><i class="bi bi-floppy me-2"></i> Save Settings</button>
                     </div>       
                 </div>
               </form>
