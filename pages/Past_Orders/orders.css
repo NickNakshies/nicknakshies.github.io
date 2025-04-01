@@ -10,13 +10,14 @@
 
 .content-window {
     max-width: 85%;
-    height: 90vh;
+    height: auto;
     margin-bottom: 3cqmin;
     border-radius: 48px;
     background: rgb(187,220,255);
     background: linear-gradient(0deg, rgb(155, 190, 253) 0%, rgb(134, 182, 226) 100%);
     overflow: hidden;
     position: relative;
+    padding-bottom: 5%;
 }
 
 .text-shadow {
