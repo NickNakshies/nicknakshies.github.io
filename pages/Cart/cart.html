@@ -460,7 +460,10 @@
                         confirmButtonText: "Go to Store",
                         confirmButtonColor: "#91c7ff",
                         showCloseButton: true,
-                        closeButtonHtml: "x"
+                        closeButtonHtml: "x",
+                        willClose: () => {
+                            clearCart(); // This ensures the cart is cleared when the modal closes
+                        }
                     }).then((result) => {
                         if (result.isConfirmed) {
                             clearCart();
