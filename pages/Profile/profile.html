@@ -198,7 +198,7 @@
         function loadSavedData() {
             let savedImage = localStorage.getItem("profileImage");
             let savedName = localStorage.getItem("playerName");
-            let savedEmail = localStorage.getItem("email");
+            let savedEmail = localStorage.getItem("signup_email");
             let savedPassword = localStorage.getItem("signup_password");
             let player_ID = localStorage.getItem("player_ID")
 
@@ -253,7 +253,7 @@
            } else {
                 localStorage.setItem("profileImage", profileImage);
                 localStorage.setItem("playerName", name);
-                localStorage.setItem("email", email);
+                localStorage.setItem("signup_email", email);
                 localStorage.setItem("signup_password", password);
                 alert("Profile updated successfully!");
            }
