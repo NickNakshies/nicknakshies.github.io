@@ -170,7 +170,7 @@
 
 
 
-            <div id="cart-items"></div> <!-- Cart items will be dynamically inserted here -->
+            <div id="cart-items"></div>
 
             <div class="remove-btn">
                 <button>Remove</button>
@@ -181,8 +181,8 @@
             </div>
             <div class="cart-summary">
                 <div class="cart-header">
-                    <div><p id="cart-header-items">Items 3</p></div> <!-- Dynamic "Items X" -->
-                        <p id="cart-header-total">₱ 594</p> <!-- Update Cart Header Total -->
+                    <div><p id="cart-header-items">Items 3</p></div> 
+                        <p id="cart-header-total">₱ 594</p> 
                 </div>
 
                 
@@ -353,7 +353,6 @@
             function renderCart() {
                 const cartContainer = document.querySelector(".poke-cart");
             
-                // Keep the cart header visible
                 cartContainer.innerHTML = `
                     <div class="poke-cart-nav">
                         <div><p>Product Details</p></div>
@@ -403,7 +402,6 @@
                     cartContainer.innerHTML += cartItemHTML;
                 });
             
-                // Reattach event listeners for remove buttons
                 document.querySelectorAll(".remove-btn").forEach(button => {
                     button.addEventListener("click", function (event) {
                         event.preventDefault();
@@ -412,7 +410,6 @@
                     });
                 });
             
-                // Reattach event listeners for quantity buttons
                 document.querySelectorAll(".minus-btn").forEach(button => {
                     button.addEventListener("click", function () {
                         let index = this.getAttribute("data-index");
@@ -428,7 +425,6 @@
                 });
             }
             
-            // Function to update the quantity
             function updateQuantity(index, change) {
                 let quantityInput = document.querySelector(`.quantity-input[data-index="${index}"]`);
                 
@@ -445,13 +441,13 @@
             function removeFromCart(index) {
                 cart.splice(index, 1);
                 localStorage.setItem("cart", JSON.stringify(cart));
-                renderCart(); // Ensures new indexes are assigned correctly
+                renderCart(); 
                 updateTotal();
             }
 
             function clearCart() {
                 localStorage.removeItem("cart");
-                cart = []; // Reset cart array
+                cart = []; 
                 renderCart();
                 updateTotal();
             }
