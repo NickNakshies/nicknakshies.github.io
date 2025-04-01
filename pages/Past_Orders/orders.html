@@ -217,12 +217,11 @@
         });
 
         document.addEventListener("DOMContentLoaded", function() {
-            // Attach event listener to all elements with class 'order-details'
+
             document.querySelectorAll('.order-details').forEach(function(element) {
                 element.addEventListener('click', function(e) {
-                    e.preventDefault(); // Prevent the default link action
+                    e.preventDefault();
 
-                    // Get data from clicked element
                     const name = this.dataset.name;
                     const date = this.dataset.date;
                     const time = this.dataset.time;
@@ -231,7 +230,6 @@
                     const price = this.dataset.price;
                     const image = this.dataset.image;
 
-                    // Display the SweetAlert popup
                     Swal.fire({
                         title: name,
                         html: `Order Placed: <b>${date}</b> | <b>${time}</b> <br>Qty: <b>${qty}</b> <br>Price: <b>${price}</b> <br>Payment Method: <b>${method}</b>`,
